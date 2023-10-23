@@ -1,0 +1,138 @@
+.contact {
+  position: relative;
+  color: #ffffff;
+  background-color: #404040;
+}
+.contact li {
+  display: inline-block;
+}
+.contact a {
+  padding: 30px;
+}
+.contact img {
+  vertical-align: middle;
+  margin: 15px;
+}
+.social ul {
+  position: absolute;
+  right: 120px;
+  top: 10px;
+}
+.social li {
+  display: inline-block;
+}
+.ntua_kitchen_nav {
+  margin: 0;
+  background-color: #ffffff;
+}
+.ntua_kitchen_nav a {
+  padding: 80px;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #5e5e5e;
+}
+.ntua_kitchen_nav li {
+  display: inline-block;
+}
+.ntua_kitchen_nav a img {
+  margin-left: 40px;
+}
+.ntua_kitchen_nav ul {
+  vertical-align: middle;
+  padding: 0;
+  margin: 40px;
+  display: inline-block;
+  width: calc(100% - 880px);
+  text-align: right;
+  position: relative;
+}
+.ntua_kitchen_nav img {
+  width: 300px;
+}
+.ntua_kitchen_nav ul li a {
+  padding: 30px;
+}
+.ntua_kitchen_nav ul button a {
+  color: #000000;
+  padding: 0px;
+}
+.ntua_kitchen_nav ul li button {
+  font-size: 16px;
+  text-align: left;
+  position: absolute;
+  top: -5px;
+  right: 400px;
+  color: #003e15;
+  background-color: #d2e2d8;
+  border-radius: 50px;
+  border-width: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.ntua_kitchen_nav button {
+  font-size: 16px;
+  color: black;
+  position: absolute;
+  right: calc(100% - 750px);
+  background-color: #ffffff;
+  border-color: black;
+  border-radius: 50px;
+  top: -12px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.cover {
+  text-align: center;
+  margin: 200px;
+}
+.cover p {
+  position: relative;
+  margin: 50px;
+}
+.cover h1 {
+  font-size: 90px;
+}
+.fast {
+  position: absolute;
+  right: 730px;
+}
+.fast a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.fast button {
+  border-radius: 50px;
+  background-color: #aa0000;
+  border-color: #aa0000;
+  border-width: 0px;
+  padding-left: 27px;
+  padding-right: 27px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+.view {
+  position: absolute;
+  right: 610px;
+}
+.view a {
+  color: #000000;
+  text-decoration: none;
+}
+.view button {
+  border-radius: 50px;
+  background-color: #ffffff;
+  border-color: black;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+body {
+  background-image: url(../img/bg.png);
+  background-repeat: no-repeat;
+  background-size: auto;
+}
