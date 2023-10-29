@@ -25,65 +25,67 @@
   margin: 0;
   background-color: #ffffff;
 }
-.ntua_kitchen_nav a {
+.ntua_kitchen_nav ul a {
   padding: 80px;
   vertical-align: middle;
   text-decoration: none;
   color: #5e5e5e;
 }
+.ntua_kitchen_nav li :hover {
+  box-sizing: content-box;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #ccdccf;
+  color: #314834;
+  border-radius: 20px;
+}
 .ntua_kitchen_nav li {
+  margin-right: 20px;
   display: inline-block;
 }
 .ntua_kitchen_nav a img {
   margin-left: 40px;
+  vertical-align: middle;
 }
 .ntua_kitchen_nav ul {
   vertical-align: middle;
   padding: 0;
   margin: 40px;
   display: inline-block;
-  width: calc(100% - 880px);
+  width: calc(100% - 50%);
   text-align: right;
-  position: relative;
 }
 .ntua_kitchen_nav img {
   width: 300px;
 }
 .ntua_kitchen_nav ul li a {
-  padding: 30px;
+  padding: 20px;
 }
 .ntua_kitchen_nav ul button a {
   color: #000000;
   padding: 0px;
 }
-.ntua_kitchen_nav ul li button {
-  font-size: 16px;
-  text-align: left;
-  position: absolute;
-  top: -5px;
-  right: 400px;
-  color: #003e15;
-  background-color: #d2e2d8;
-  border-radius: 50px;
-  border-width: 0px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
 .ntua_kitchen_nav button {
+  position: fixed;
+  text-decoration: none;
   font-size: 16px;
   color: black;
-  position: absolute;
-  right: calc(100% - 750px);
+  margin-bottom: 5px;
+  left: calc(100% - 17%);
+  bottom: calc(100% - 16.2%);
   background-color: #ffffff;
   border-color: black;
   border-radius: 50px;
-  top: -12px;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+.ntua_kitchen_nav button:hover {
+  background-color: #000000;
+}
+.ntua_kitchen_nav button a:hover {
+  color: #ffffff;
 }
 .cover {
   text-align: center;
@@ -96,43 +98,61 @@
 .cover h1 {
   font-size: 90px;
 }
-.fast {
-  position: absolute;
-  right: 730px;
-}
 .fast a {
   color: #ffffff;
   text-decoration: none;
 }
 .fast button {
+  position: fixed;
+  right: calc(100vw - 50vw);
+  color: #ffffff;
   border-radius: 50px;
   background-color: #aa0000;
   border-color: #aa0000;
-  border-width: 0px;
-  padding-left: 27px;
-  padding-right: 27px;
-  padding-top: 17px;
-  padding-bottom: 17px;
+  border-width: 2px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
-.view {
-  position: absolute;
-  right: 610px;
+.fast button a:hover {
+  color: #ffffff;
+}
+.fast :hover {
+  background-color: #4f0000;
+  border-color: #4f0000;
+}
+.fast button:hover {
+  border-width: 2px;
+  border-color: #000000;
 }
 .view a {
   color: #000000;
   text-decoration: none;
 }
 .view button {
+  position: fixed;
+  right: calc(100vw - 58vw);
   border-radius: 50px;
   background-color: #ffffff;
   border-color: black;
+  border-width: 2px;
   padding-left: 25px;
   padding-right: 25px;
   padding-top: 15px;
   padding-bottom: 15px;
 }
+.view button:hover {
+  border-color: #ababab;
+  border-width: 2px;
+  background-color: #ababab;
+}
+
 body {
   background-image: url(../img/bg.png);
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
+}
+.body {
+  max-width: 1080px;
 }
