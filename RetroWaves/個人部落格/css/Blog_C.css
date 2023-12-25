@@ -1,0 +1,1119 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+* {
+  font-family: "Noto Sans TC";
+}
+
+@import url(https://fonts.googleapis.com/earlyaccess/delagothicone.css);
+* {
+  font-family: "Dela Gothic One";
+}
+
+.material-symbols-rounded {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+
+/* BODY CSS START */
+
+body {
+  background-color: #000000;
+  font-family: "Noto Sans TC";
+}
+
+#menu {
+  position: fixed;
+  /* right: 0; */
+  top: 0vw;
+  width: 100%;
+}
+
+/* 00_Header */
+
+.Header {
+  background-color: #ff005c;
+  color: #ffffff;
+  width: auto;
+  height: 55px;
+  padding-left: 8vw;
+}
+
+.Header .Search {
+  font-weight: 200;
+  position: absolute;
+  top: 9%;
+  margin: 2px;
+  margin-left: 20vw;
+  background: white;
+  width: 600px;
+  height: 28px;
+  border-radius: 155px;
+  border: 1px black solid;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.Header .Search a {
+  margin: 2px;
+  margin-right: 1vw;
+}
+
+.Header .Functions {
+  position: absolute;
+  right: 10vw;
+  top: 13%;
+  display: inline-flex;
+  margin: 6px;
+}
+
+.Header .Functions a {
+  padding-left: 1vw;
+}
+
+/* 00_Nav */
+
+.Nav {
+  background-color: #000000;
+  color: #ffffff;
+  width: auto;
+  height: 35px;
+  padding-left: 9.3vw;
+}
+
+.Nav a {
+  color: #ffffff;
+  text-decoration: none;
+  display: inline;
+  font-family: Noto Sans TC;
+  font-size: 14px;
+  font-weight: 250;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.Nav a:hover {
+  color: #ff005c;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: ease-in-out 0.2s;
+}
+
+.Nav ul {
+  padding-top: 0.7vw;
+}
+
+.Nav li {
+  display: inline;
+  padding-right: 11.1vw;
+}
+
+/* 01_個資 */
+
+.Profile {
+  background-image: url(../img/Pink\ Gradient.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  height: 2519px;
+}
+
+.info {
+  background-image: url(../img/ID\ Card.svg);
+  background-repeat: no-repeat;
+  max-width: 100%;
+  display: block;
+  height: 687px;
+  background-position: center;
+  margin-top: 8vw;
+}
+
+.info .left {
+  color: #000000;
+  font-weight: 400;
+  display: block;
+  position: absolute;
+  padding-left: 20vw;
+  padding-top: 37.2vw;
+}
+
+.info .right {
+  color: #4d4242;
+  font-family: "Dela Gothic One";
+  display: block;
+  position: absolute;
+  padding-left: 58vw;
+  padding-top: 8.8vw;
+  line-height: 4.6vw;
+}
+
+.info .right a {
+  color: #4d4242;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.info .right .name:hover {
+  color: #ff005c;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.info .right a:hover {
+  color: #ff005c;
+  text-decoration: none;
+  font-weight: 600;
+  transition: ease-in-out 0.2s;
+}
+
+.info .genres {
+  display: flex;
+  padding-left: 43vw;
+  padding-top: 26vw;
+  color: #ffffff;
+}
+
+.info .genres a {
+  margin: 0.5vw;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #000000;
+  width: 80px;
+  height: 30px;
+  font-weight: 400;
+  border-radius: 118px;
+  /*border: 1.5px solid var(--neutral-07, #2c2f24);*/
+  display: inline-flex;
+  vertical-align: middle;
+  padding: 5px;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.info .genres a:hover {
+  color: #ffffff;
+  background-color: #ff005c;
+  transition: ease-in 0.2s;
+}
+
+.info .genres2 {
+  display: flex;
+  padding-left: 43vw;
+  /*padding-top: 20vw;*/
+}
+
+.info .genres2 a {
+  margin: 0.5vw;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #000000;
+  width: 80px;
+  height: 30px;
+  font-weight: 400;
+  border-radius: 118px;
+  display: inline-flex;
+  vertical-align: middle;
+  padding: 5px;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.info .genres2 a:hover {
+  color: #ffffff;
+  background-color: #ff005c;
+  transition: ease-in 0.2s;
+}
+
+.slide_down p {
+  color: #ff005c;
+  font-size: 24px;
+  font-family: Noto Sans TC;
+  font-weight: 900;
+  letter-spacing: 1.44px;
+  padding-top: 15vw;
+  padding-left: 45vw;
+}
+
+/* 02_資料夾 */
+
+.Files {
+  overflow: hidden;
+  width: 1920px;
+}
+
+h1 {
+  padding-top: 5vw;
+  font-family: "Dela Gothic One";
+  font-size: 128px;
+  color: #ff005c;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline;
+  position: absolute;
+  text-align: right;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.Status {
+  padding-top: 22vw;
+  padding-left: 10vw;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.Status h2 {
+  position: absolute;
+  margin-top: -17vh;
+  padding-left: 15vw;
+  font-family: "Dela Gothic One";
+  font-size: 55px;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.Status h2:hover {
+  position: absolute;
+  padding-top: 0%;
+  padding-left: 15vw;
+  font-family: "Dela Gothic One";
+  font-size: 55px;
+  color: #ff005dc5;
+  transition: ease-in-out 0.2s;
+}
+
+.setting {
+  padding-left: 45vw;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/*.setting:hover {
+  padding-left: 45vw;
+  color: #ff005c;
+  transition: ease-in-out 0.2s;
+}*/
+
+.Status p {
+  font-family: "Dela Gothic One";
+  font-size: 24px;
+  color: #ffffff;
+  margin: 0.5vw;
+  background-color: #ff005c;
+  width: 204px;
+  height: 80px;
+  border-radius: 30px;
+  display: inline-flex;
+  vertical-align: middle;
+  padding: 5px;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  padding-top: 0%;
+  margin-left: 63vw;
+  overflow: hidden;
+}
+
+.Status a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.Status a:hover {
+  color: #ff005c;
+  text-decoration: none;
+  background-color: #000000a1;
+  width: 204px;
+  height: 80px;
+  border-radius: 30px;
+  display: inline-flex;
+  vertical-align: middle;
+  padding: 5px;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: ease-in-out 0.2s;
+}
+
+.Files .Openfile {
+  background-image: url(../img/FILE.svg);
+  width: 1227px;
+  height: 1389px;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  display: block;
+  background-position: center;
+  padding-top: 72vw;
+  padding-left: 18vw;
+}
+
+.collect ul {
+  position: absolute;
+  margin-top: -65vh;
+  margin-left: -6.2vw;
+}
+
+.collect li {
+  display: inline;
+  margin-right: 2vw;
+}
+
+.collect li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  margin-inline-end: 10px;
+}
+
+.collect .oo {
+  color: #ffffff;
+  background-color: #ff005c;
+  /*border: 1.5px solid var(--neutral-07, #2c2f24);*/
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Noto Sans TC";
+  width: 116px;
+  height: 30px;
+  border-radius: 100px;
+  display: inline-flex;
+  vertical-align: middle;
+  padding: 5px;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.collect .xx a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #000000;
+  /*border: 1.5px solid var(--neutral-07, #2c2f24);*/
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Noto Sans TC";
+  width: 116px;
+  height: 30px;
+  border-radius: 100px;
+  display: inline-flex;
+  vertical-align: middle;
+  padding: 5px;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.collect .xx a:hover {
+  color: #ffffff;
+  background-color: #ff005c;
+  transition: ease-in 0.2s;
+}
+
+.collect_view {
+  color: #000000;
+  position: absolute;
+  display: inline-flex;
+  margin-top: -55vh;
+  margin-left: -6.2vw;
+}
+
+.collect_view p {
+  font-size: 16px;
+  padding-top: 3px;
+}
+
+.collect_view a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: "Noto Sans TC";
+  margin-left: -43.5vw;
+}
+
+#grid_view {
+  margin-left: 65.5vw;
+}
+
+.List {
+  width: 1050px;
+  display: inline-flex;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  margin-left: -2vw;
+  border-bottom: 1px #606060 solid;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.collect_list1 {
+  width: 1060px;
+  height: 190px;
+  margin-top: -75vh;
+  display: inline-flex;
+}
+
+.list_songs1 {
+  margin-top: -14vh;
+  margin-left: -2vw;
+}
+
+.list_text1 h3 a {
+  color: black;
+  text-decoration: none;
+  font-size: 36px;
+  font-family: Noto Sans TC;
+  font-weight: 900;
+  letter-spacing: 1.44px;
+  padding-top: 5vh;
+  padding-left: 2.8vw;
+}
+
+.list_text2 h3 a {
+  color: black;
+  text-decoration: none;
+  font-size: 36px;
+  font-family: Noto Sans TC;
+  font-weight: 900;
+  letter-spacing: 1.44px;
+  padding-top: 5vh;
+  padding-left: -8vw;
+}
+
+.list_text3 h3 a {
+  color: black;
+  text-decoration: none;
+  font-size: 36px;
+  font-family: Noto Sans TC;
+  font-weight: 900;
+  letter-spacing: 1.44px;
+  padding-top: 5vh;
+  padding-left: -8vw;
+}
+
+h3 a:hover {
+  color: #ff005c;
+  transition: ease-in 0.2s;
+}
+
+.list_text1 p {
+  width: 397px;
+  color: #606060;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  word-wrap: break-word;
+  margin-top: 2vh;
+  padding-top: 0;
+  padding-left: 3vw;
+}
+
+.arrow {
+  margin-top: -19vh;
+  padding-left: 20.5vw;
+}
+
+.collect_list2 {
+  width: 1060px;
+  height: 247px;
+  margin-top: 12vh;
+  display: inline-flex;
+}
+
+.list_songs2 {
+  margin-top: -14vh;
+  margin-left: -2vw;
+}
+
+.list_text2 h3 {
+  color: black;
+  font-size: 36px;
+  font-family: Noto Sans TC;
+  font-weight: 900;
+  letter-spacing: 1.44px;
+  margin-top: 3vh;
+  padding-left: 3vw;
+}
+
+.list_text2 p {
+  width: 440px;
+  color: #606060;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  word-wrap: break-word;
+  margin-top: 2vh;
+  padding-top: 0;
+  padding-left: 3vw;
+}
+
+.arrow2 {
+  margin-top: -19vh;
+  padding-left: 18vw;
+}
+
+.collect_list3 {
+  width: 1060px;
+  height: 247px;
+  margin-top: 12vh;
+  display: inline-flex;
+}
+
+.list_songs3 {
+  margin-top: -14vh;
+  margin-left: -2vw;
+}
+
+.list_text3 h3 {
+  color: black;
+  font-size: 36px;
+  font-family: Noto Sans TC;
+  font-weight: 900;
+  letter-spacing: 1.44px;
+  margin-top: 3vh;
+  padding-left: 3vw;
+}
+
+.list_text3 p {
+  width: 400px;
+  color: #606060;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  word-wrap: break-word;
+  margin-top: 2vh;
+  padding-top: 0;
+  padding-left: 3vw;
+}
+
+/* 3 留言板 */
+
+.wrapper2 {
+  position: relative;
+  padding-top: -20vh;
+}
+
+.Pink_Board span img {
+  width: 1520px;
+  margin-top: -15vh;
+}
+
+#Comment h1 {
+  color: #ffffff;
+  margin-top: -55vh;
+}
+
+/* 4 廣告 */
+
+#Recommend h1 {
+  color: #ffffff;
+  margin-top: -130vh;
+}
+
+.ADS {
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.AD_1 span img {
+  width: 770px;
+  margin-left: -2vw;
+  margin-top: -100vw;
+  transform-origin: 0 0;
+  transition: transform 0.25s, visibility 0.25s ease-in;
+}
+
+.AD_1 span img:hover {
+  opacity: 0.75%;
+  transform: scale(2);
+}
+
+.AD_2 span img {
+  width: 770px;
+  margin-left: -1.5vw;
+  margin-top: -100vw;
+  transform-origin: 0 0;
+  transition: transform 0.25s, visibility 0.25s ease-in;
+}
+
+.AD_2 span img:hover {
+  opacity: 0.75%;
+  transform: scale(2);
+}
+
+h4 {
+  color: #ffffff;
+  z-index: 10;
+  position: relative;
+  font-size: 16px;
+  font-family: PingFang TC;
+  font-weight: 600;
+  word-wrap: break-word;
+  top: -59vh;
+  left: 8vw;
+}
+
+h5 {
+  color: #ffffff;
+  z-index: 10;
+  position: relative;
+  font-family: PingFang TC;
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 5.12px;
+  word-wrap: break-word;
+  top: -56vh;
+  left: 8vw;
+}
+
+h6 {
+  color: #ffffff;
+  z-index: 10;
+  position: relative;
+  width: 580px;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 200;
+  line-height: 29.97px;
+  letter-spacing: 1.2px;
+  word-wrap: break-word;
+  top: -5vh;
+  left: 8vw;
+}
+
+/* Footer */
+
+footer {
+  background-image: url(../img/BG.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  height: 300px;
+}
+
+.footer-position {
+  background-image: url(../img/BG.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  height: 300px;
+  width: 1920px;
+  /*height: 50px;*/
+  padding-left: 9px;
+  padding-top: 0px;
+  position: absolute;
+  background: black;
+  border-top: 2px white solid;
+}
+.contact-text {
+  width: 346px;
+  padding-left: 10vw;
+  padding-top: 63vh;
+  position: absolute;
+  color: white;
+  font-size: 10px;
+  font-family: Noto Sans TC;
+  font-weight: 200;
+  word-wrap: break-word;
+}
+
+/* 1/6 */
+.joinus {
+  width: 417.95px;
+  height: 220.88px;
+  padding-left: 70vw;
+  padding-top: 10vh;
+  position: absolute;
+}
+.joinus-bar {
+  width: 365.34px;
+  height: 24px;
+  padding-left: 0px;
+  padding-top: 162.17px;
+  position: absolute;
+}
+.joinus-bar-position {
+  width: 365.34px;
+  height: 48px;
+  padding-left: 0px;
+  margin-top: -42px;
+  position: absolute;
+  background: white;
+  border: 2px white solid;
+}
+.joinus-bar-text {
+  width: 157.95px;
+  height: 22.58px;
+  padding-left: 28.3px;
+  margin-top: -3.5vh;
+  position: absolute;
+  color: rgba(0, 1, 4, 0.6);
+  font-size: 14px;
+  font-family: Noto Sans TC;
+  font-weight: 200;
+  word-wrap: break-word;
+}
+.joinus-title {
+  width: 417.95px;
+  height: 28.85px;
+  padding-left: 0px;
+  padding-top: -3px;
+  position: absolute;
+  color: #999;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.joinus-text {
+  width: 373.28px;
+  height: 49.75px;
+  padding-left: 0px;
+  padding-top: 5vh;
+  position: absolute;
+  color: #999;
+  line-height: 2;
+  font-size: 14px;
+  font-family: Noto Sans TC;
+  font-weight: 200;
+  word-wrap: break-word;
+}
+
+/* 2/6 */
+.contact {
+  width: 290.86px;
+  height: 130.29px;
+  padding-left: 10vw;
+  padding-top: 40vh;
+  position: absolute;
+}
+.contact-title {
+  width: 234.29px;
+  height: 28.85px;
+  padding-left: 2.98px;
+  margin-top: 4vh;
+  position: absolute;
+  color: #999;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.contact-icon01 {
+  width: 29.78px;
+  height: 29.85px;
+  padding-left: 0px;
+  padding-top: 10.5vh;
+  position: absolute;
+}
+.contact-icon02 {
+  width: 28.17px;
+  height: 29.85px;
+  padding-left: 64.53px;
+  padding-top: 10.5vh;
+  position: absolute;
+}
+.contact-icon03 {
+  width: 27.49px;
+  height: 29.85px;
+  padding-left: 128.07px;
+  padding-top: 10.5vh;
+  position: absolute;
+}
+.contact-icon04 {
+  width: 28.29px;
+  height: 29.85px;
+  padding-left: 190.61px;
+  padding-top: 10.5vh;
+  position: absolute;
+}
+.contact-icon05 {
+  width: 36.71px;
+  height: 39.8px;
+  padding-left: 254.15px;
+  padding-top: 9.8vh;
+  position: absolute;
+}
+
+/* 3/6 */
+.pay {
+  width: 427.18px;
+  height: 132.28px;
+  padding-left: 39vw;
+  padding-top: 39vh;
+  position: absolute;
+}
+.pay-title {
+  width: 417.95px;
+  height: 28.85px;
+  padding-left: 0px;
+  margin-top: 27px;
+  position: absolute;
+  color: #999;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.pay-position {
+  width: 35.74px;
+  height: 10px;
+  padding-left: 82.4px;
+  padding-top: 75.54px;
+  position: absolute;
+}
+.pay-icon01 {
+  width: 37px;
+  height: 15px;
+  padding-left: 14.18px;
+  padding-top: 12vh;
+  position: absolute;
+}
+.pay-icon02 {
+  width: 36.73px;
+  height: 32.83px;
+  padding-left: 82.4px;
+  padding-top: 10vh;
+  position: absolute;
+}
+.pay-icon03 {
+  width: 44px;
+  height: 18px;
+  padding-left: 162.18px;
+  padding-top: 12vh;
+  position: absolute;
+}
+.pay-icon04 {
+  width: 32.76px;
+  height: 43.78px;
+  padding-left: 241.24px;
+  padding-top: 10.5vh;
+  position: absolute;
+}
+.pay-icon05 {
+  width: 39px;
+  height: 38px;
+  padding-left: 309.18px;
+  padding-top: 10.5vh;
+  position: absolute;
+}
+.pay-icon06 {
+  width: 42px;
+  height: 42px;
+  padding-left: 385.18px;
+  padding-top: 10.3vh;
+  position: absolute;
+}
+
+/* 4/6 */
+.service {
+  width: 417.95px;
+  height: 223.86px;
+  padding-left: 39vw;
+  padding-top: 10vh;
+  position: absolute;
+}
+.service-title {
+  width: 417.95px;
+  height: 28.85px;
+  padding-left: 0px;
+  padding-top: -3px;
+  position: absolute;
+  color: #999;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.service-text01 {
+  width: 122.11px;
+  height: 24.87px;
+  padding-left: 0px;
+  padding-top: 7vh;
+  position: absolute;
+  color: #999;
+  font-size: 14px;
+  font-family: Noto Sans TC;
+  font-weight: 200;
+  word-wrap: break-word;
+}
+.service-text02 {
+  width: 122.11px;
+  height: 24.87px;
+  padding-left: 0px;
+  padding-top: 12vh;
+  position: absolute;
+  color: #999;
+  font-size: 14px;
+  font-family: Noto Sans TC;
+  font-weight: 200;
+  word-wrap: break-word;
+}
+.service-text03 {
+  width: 122.11px;
+  height: 24.87px;
+  padding-left: 0px;
+  padding-top: 17vh;
+  position: absolute;
+  color: #999;
+  font-size: 14px;
+  font-family: Noto Sans TC;
+  font-weight: 200;
+  word-wrap: break-word;
+}
+.service-text04 {
+  width: 122.11px;
+  height: 24.87px;
+  padding-left: 0px;
+  padding-top: 22vh;
+  position: absolute;
+  color: #999;
+  font-size: 14px;
+  font-family: Noto Sans TC;
+  font-weight: 200;
+  word-wrap: break-word;
+}
+
+/* 5/6 */
+.transfrom {
+  width: 418.95px;
+  height: 146.46px;
+  padding-left: 70vw;
+  padding-top: 39vh;
+  position: absolute;
+}
+.transfrom-title {
+  width: 417.95px;
+  height: 28.85px;
+  padding-left: 0.99px;
+  margin-top: 4vh;
+  position: absolute;
+  color: #999;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.transfrom-bar {
+  width: 365.34px;
+  height: 58.7px;
+  padding-left: 0px;
+  padding-top: 102.75px;
+  position: absolute;
+}
+.transform-bar-position {
+  width: 365.34px;
+  height: 58.7px;
+  padding-left: 0px;
+  padding-top: 0px;
+  position: absolute;
+}
+.transform-bar-background {
+  width: 365.34px;
+  height: 48px;
+  padding-left: 0px;
+  margin-top: -36px;
+  position: absolute;
+  background: white;
+  border: 2px white solid;
+}
+.transform-bar-text {
+  width: 159.03px;
+  height: 22.58px;
+  padding-left: 77.86px;
+  margin-top: -17.94px;
+  position: absolute;
+  color: rgba(0, 1, 4, 0.6);
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.transform-bar-arrow {
+  width: 36.98px;
+  height: 38.8px;
+  margin-left: 350px;
+  padding-top: -1.25px;
+  position: absolute;
+  transform: rotate(-180deg);
+  transform-origin: 0 0;
+}
+.transform-bar-icon {
+  width: 29.78px;
+  height: 28.84px;
+  padding-left: 25.81px;
+  margin-top: -25px;
+  position: absolute;
+}
+
+/* 直線 */
+/*.footer-line01 {
+  width: 540px;
+  height: 0px;
+  margin-left: 37vw;
+  padding-top: 500px;
+  position: absolute;
+  transform: rotate(90deg);
+  transform-origin: 0 0;
+  border: 1px white solid;
+}
+.footer-line02 {
+  width: 538px;
+  height: 0px;
+  margin-left: 833px;
+  padding-top: 839px;
+  position: absolute;
+  transform: rotate(90deg);
+  transform-origin: 0 0;
+  border: 1px white solid;
+}
+
+/* 橫線 */
+/*.footer-line03 {
+  width: 1944px;
+  height: 40px;
+  margin-left: 37vw;
+  padding-top: 64px;
+  position: absolute;
+  border: 1px white solid;
+}
+.footer-line04 {
+  width: 1944px;
+  height: 0px;
+  margin-left: -5vw;
+  padding-top: 280px;
+  position: absolute;
+  border: 1px white solid;
+}
+.footer-line05 {
+  width: 1314.65px;
+  height: 1px;
+  margin-left: -10px;
+  padding-top: 345px;
+  position: absolute;
+  border: 1px white solid;
+}
+
+/* 6/6 */
+.footer-logo {
+  width: 300px;
+  padding-left: 6.2vw;
+  padding-top: 43px;
+  position: absolute;
+}

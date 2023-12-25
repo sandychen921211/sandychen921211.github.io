@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loading {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  top: 1050px;
+  left: 420px;
+}
+
+.loading span {
+  position: relative;
+  width: 5px;
+  height: 20px;
+}
+
+.loading span::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  animation: animate 8s linear infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes animate {
+  0% {
+    background: #ff005c;
+    box-shadow: 0 0 5px #ff005c, 0 0 15px #ff005c, 0 0 30px #ff005c,
+      0 0 50px #ff005c;
+    rotate: 0deg;
+  }
+  20% {
+    background: #ff005c;
+    box-shadow: 0 0 5px #ff005c, 0 0 15px #ff005c, 0 0 30px #ff005c,
+      0 0 50px #ff005c;
+    rotate: 0deg;
+  }
+  40% {
+    background: #ff005c;
+    box-shadow: 0 0 5px #ff005c, 0 0 15px #ff005c, 0 0 30px #ff005c,
+      0 0 50px #ff005c;
+    rotate: 90deg;
+    transform-origin: bottom;
+    filter: hue-rotate(0deg);
+  }
+  80% {
+    background: #ff005c;
+    box-shadow: 0 0 5px #ff005c, 0 0 15px #ff005c, 0 0 30px #ff005c,
+      0 0 50px #ff005c;
+    rotate: 90deg;
+    transform-origin: bottom;
+    filter: hue-rotate(360deg);
+  }
+  90% {
+    background: #000;
+    box-shadow: none;
+    rotate: 0deg;
+  }
+  90.1%,
+  100% {
+    box-shadow: #000;
+    box-shadow: none;
+  }
+}
+
+@keyframes scaleDraw {
+  /*定義關鍵幀、scaleDrew是需要繫結到選擇器的關鍵幀名稱*/
+  0% {
+    transform: scale(1); /*開始為原始大小*/
+  }
+
+  25% {
+    transform: scale(1.5); /*放大1.1倍*/
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.5);
+  }
+}
+
+.page09-character img {
+  position: absolute;
+  top: 25px;
+  left: 200px;
+  width: 150px;
+  height: 100px;
+  margin: 100px auto;
+  animation-name: scaleDraw; /*關鍵幀名稱*/
+  animation-timing-function: ease-in-out; /*動畫的速度曲線*/
+  animation-iteration-count: infinite; /*動畫播放的次數*/
+  animation-duration: 5s;
+  z-index: 999; /*動畫所花費的時間*/
+
+  /*可以簡寫為*/
+  /* animation: scaleDraw 5s ease-in-out infinite; */
+  /* -webkit-animation: scaleDraw 5s ease-in-out infinite; */
+}
