@@ -61,8 +61,9 @@ body {
 }
 .description {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 5%;
+  margin-left: 46%;
+  width: 550px;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -237,6 +238,7 @@ Screen style's
   font-size: 20px;
   font-weight: 500;
   text-transform: uppercase;
+  font-family: sans-serif;
 }
 
 .menu > ul > li > .mega-menu li > ul {
@@ -245,6 +247,8 @@ Screen style's
   margin: 10px 0 0;
   list-style: none;
   box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: 500;
 }
 
 .menu > ul > li > .mega-menu li > ul:before,
@@ -384,26 +388,26 @@ Mobile style's
 }
 .title01-line01 {
   width: 1px;
-  height: 390px;
+  height: 340px;
   position: relative;
-  left: 510px;
-  top: 30px;
+  left: 620px;
+  top: 130px;
   background-color: #000000;
 }
 .title01-line02 {
   width: 1px;
-  height: 390px;
+  height: 340px;
   position: relative;
-  left: 920px;
-  top: -355px;
+  left: 935px;
+  top: -210px;
   background-color: #000000;
 }
 .title01-line03 {
   width: 1px;
-  height: 390px;
+  height: 335px;
   position: relative;
-  left: 1330px;
-  top: -745px;
+  left: 1245px;
+  top: -550px;
   background-color: #000000;
 }
 .subtitle02-2 a {
@@ -435,9 +439,8 @@ Mobile style's
   top: 40px;
   color: #000000;
   font-size: 20px;
-  font-weight: 500;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  font-family: sans-serif;
 }
 .title02-littleword h2 {
   position: relative;
@@ -445,9 +448,8 @@ Mobile style's
   top: -40px;
   color: #000000;
   font-size: 20px;
-  font-weight: 500;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  font-family: sans-serif;
 }
 .title02-littleword h3 {
   position: relative;
@@ -455,14 +457,13 @@ Mobile style's
   top: -120px;
   color: #000000;
   font-size: 20px;
-  font-weight: 500;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  font-family: sans-serif;
 }
 .title02-line {
   position: relative;
   left: 840px;
-  top: -320px;
+  top: -485px;
   width: 1px;
   height: 430px;
   background-color: #000000;
@@ -566,6 +567,9 @@ Mobile style's
   left: 380px;
 }
 .submenu05-image03 p {
+  color: #000000;
+  font-family: sans-serif;
+  font-weight: 500;
   position: relative;
   top: 8px;
   margin-left: 8px;
@@ -573,10 +577,13 @@ Mobile style's
 .submenu05-image04 {
   width: 100px;
   position: relative;
-  top: -470px;
+  top: -498px;
   left: 530px;
 }
 .submenu05-image04 p {
+  color: #000000;
+  font-family: sans-serif;
+  font-weight: 500;
   margin-left: 10px;
   margin-top: 10px;
 }
@@ -586,10 +593,13 @@ Mobile style's
 .submenu05-image05 {
   width: 100px;
   position: relative;
-  top: -590px;
+  top: -645px;
   left: 680px;
 }
 .submenu05-image05 p {
+  color: #000000;
+  font-family: sans-serif;
+  font-weight: 500;
   position: relative;
   top: 35px;
   left: 15px;
@@ -602,10 +612,13 @@ Mobile style's
 .submenu05-image06 {
   width: 100px;
   position: relative;
-  top: -480px;
+  top: -585px;
   left: 380px;
 }
 .submenu05-image06 p {
+  color: #000000;
+  font-family: sans-serif;
+  font-weight: 500;
   margin-left: 15px;
   position: relative;
   top: 15px;
@@ -619,18 +632,24 @@ Mobile style's
 .submenu05-image07 {
   width: 100px;
   position: relative;
-  top: -590px;
+  top: -723px;
   left: 530px;
 }
 .submenu05-image07 p {
+  color: #000000;
+  font-family: sans-serif;
+  font-weight: 500;
   margin-left: 15px;
 }
 .submenu05-image08 {
   position: relative;
-  top: -725px;
+  top: -885px;
   left: 690px;
 }
 .submenu05-image08 p {
+  color: #000000;
+  font-family: sans-serif;
+  font-weight: 500;
   margin-left: 15px;
 }
 .submenu05-image02 {
@@ -651,7 +670,7 @@ Mobile style's
 .submenu05-line {
   position: relative;
   left: 185px;
-  top: -1060px;
+  top: -1225px;
   width: 1px;
   height: 430px;
   background-color: #000000;
@@ -950,7 +969,8 @@ nav {
 #background03 {
   scale: 1.3;
   position: relative;
-  left: 1600px;
+  left: 1540px;
+  margin-top: -100px;
 }
 .background03 {
   scale: 1.2;
@@ -2873,49 +2893,52 @@ h1 {
 }
 .subtitle01-1 a {
   position: relative;
-  left: 350px;
+  left: 375px;
   font-size: 18px;
   margin-top: 150px;
 }
 .subtitle01-1 img {
   scale: 0.8;
   position: relative;
-  left: 340px;
-  margin-top: -50px;
+  left: 350px;
+  margin-top: -65px;
 }
 .subtitle02-1 a {
   position: relative;
-  left: 165px;
+  left: 220px;
   font-size: 18px;
   margin-top: 150px;
 }
 .subtitle02-1 img {
   scale: 0.8;
   position: relative;
-  left: 115px;
-  margin-top: -50px;
+  left: 170px;
+  margin-top: -75px;
 }
 .subtitle03-1 a {
   position: relative;
-  left: -100px;
-  font-size: 18px;
-  margin-top: 120px;
+  left: -185px;
+  margin-top: 110px;
 }
 .subtitle03-1 img {
   scale: 0.8;
   position: relative;
-  left: -100px;
-  margin-top: -50px;
+  left: -210px;
+  margin-top: -75px;
 }
 .subtitle04-1 a {
   position: relative;
-  left: -80px;
+  left: -100px;
   font-size: 18px;
-  margin-top: 160px;
+  margin-top: 145px;
 }
 .subtitle04-1 img {
   scale: 0.8;
   position: relative;
-  left: -80px;
-  margin-top: -50px;
+  left: -125px;
+  margin-top: -60px;
+}
+.description p {
+  position: relative;
+  left: 1000px;
 }
