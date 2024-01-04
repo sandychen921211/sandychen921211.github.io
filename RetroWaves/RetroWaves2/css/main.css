@@ -20,7 +20,7 @@ body {
   padding: 0px;
 }
 .nav {
-  width: 1920px;
+  width: 100vw;
   height: 156px;
   left: 100px;
   top: -10px;
@@ -28,7 +28,7 @@ body {
 }
 
 .navbar01 {
-  width: 1920px;
+  width: 100vw;
   height: 147px;
   left: -100px;
   top: 9px;
@@ -38,10 +38,10 @@ body {
   z-index: 1000;
 }
 .navbar02 {
-  width: 1920px;
-  height: 58px;
+  width: 100vw;
+  height: 70px;
   left: 0px;
-  top: 98px;
+  top: 105px;
   position: absolute;
   background: black;
 }
@@ -135,7 +135,7 @@ Screen style's
   margin: 0 auto;
   width: 1920px;
   position: relative;
-  left: 180px;
+  left: 10px;
   margin-top: 10px;
   /* IF .menu position=relative -> ul = container width, ELSE ul = 100% width */
   box-sizing: border-box;
@@ -166,7 +166,7 @@ Screen style's
   position: relative;
   top: -6px;
   text-decoration: none;
-  padding: 0.9em 4.5em;
+  padding: 0.9em 5.5em;
   display: block;
   font-size: 20px;
   font-weight: 500;
@@ -183,17 +183,20 @@ Screen style's
 
 .menu > ul > li > .mega-menu {
   display: none;
-  width: 100%;
+  width: 110%;
   height: 500px;
   background: #edece8;
   padding: 20px;
   position: absolute;
   top: 65px;
   z-index: 99;
-  left: -180px;
+  left: -100px;
   margin: 0;
   list-style: none;
   box-sizing: border-box;
+}
+.mega-menu {
+  width: 130%;
 }
 
 .menu > ul li ul li a {
@@ -385,34 +388,34 @@ Mobile style's
 }
 .subtitle04 a {
   margin-top: 30px;
-  margin-left: 5px;
+  margin-left: -25px;
 }
 .title02 a {
   position: relative;
   background-position: bottom right;
 }
 .title01-line01 {
-  width: 1px;
-  height: 340px;
+  width: 0.5px;
+  height: 320px;
   position: relative;
   left: 620px;
   top: 130px;
   background-color: #000000;
 }
 .title01-line02 {
-  width: 1px;
-  height: 340px;
+  width: 0.5px;
+  height: 320px;
   position: relative;
   left: 935px;
-  top: -210px;
+  top: -190px;
   background-color: #000000;
 }
 .title01-line03 {
-  width: 1px;
-  height: 335px;
+  width: 0.5px;
+  height: 320px;
   position: relative;
-  left: 1245px;
-  top: -550px;
+  left: 1275px;
+  top: -510px;
   background-color: #000000;
 }
 .subtitle02-2 a {
@@ -468,7 +471,7 @@ Mobile style's
 .title02-line {
   position: relative;
   left: 840px;
-  top: -485px;
+  top: -530px;
   width: 1px;
   height: 430px;
   background-color: #000000;
@@ -520,19 +523,20 @@ Mobile style's
   left: 1301px;
   top: -340px;
 }
+
 .submenu04-image01 {
   position: relative;
-  left: -700px;
+  left: -795px;
   top: 50px;
 }
 .submenu04-image02 {
   position: relative;
-  left: -525px;
+  left: -665px;
   top: 60px;
 }
 .submenu04-image03 {
   position: relative;
-  left: 900px;
+  left: 840px;
   top: -320px;
 }
 .submenu04-line01 {
@@ -692,7 +696,7 @@ Mobile style's
 }
 .submenu06-image04 {
   margin-top: 10px;
-  margin-left: -12px;
+  margin-left: -45px;
 }
 .submenu06-liine01 {
   width: 1px;
@@ -706,7 +710,7 @@ Mobile style's
   width: 1px;
   height: 390px;
   position: relative;
-  left: 950px;
+  left: 1008px;
   top: -355px;
   background-color: #000000;
 }
@@ -714,7 +718,7 @@ Mobile style's
   width: 1px;
   height: 390px;
   position: relative;
-  left: 1350px;
+  left: 1445px;
   top: -750px;
   background-color: #000000;
 }
@@ -722,8 +726,8 @@ Mobile style's
 .search {
   width: 928px;
   height: 44px;
-  left: 510px;
-  top: -70px;
+  left: 560px;
+  top: -78px;
   position: absolute;
   background: white;
   border-radius: 50px;
@@ -740,7 +744,7 @@ nav {
 .navbar-icon01 {
   width: 30px;
   height: 30px;
-  left: 1550px;
+  left: 1600px;
   top: 42px;
   position: absolute;
 }
@@ -752,7 +756,7 @@ nav {
 .navbar-icon02 {
   width: 30px;
   height: 30px;
-  left: 1615px;
+  left: 1670px;
   top: 43px;
   position: absolute;
 }
@@ -768,7 +772,7 @@ nav {
   padding-bottom: 1.71px;
   padding-left: 20px;
   padding-right: 1.71px;
-  left: 1670px;
+  left: 1725px;
   top: 42px;
   position: absolute;
   justify-content: center;
@@ -783,7 +787,7 @@ nav {
 .navbar-icon04 {
   width: 30px;
   height: 30px;
-  left: 1395px;
+  left: 1440px;
   top: 37px;
   position: absolute;
 }
@@ -800,7 +804,7 @@ nav {
   position: absolut;
 }
 .page01 {
-  width: 1920px;
+  width: 100vw;
   height: 961px;
   left: 0px;
   top: 147px;
@@ -888,8 +892,9 @@ nav {
   z-index: 2;
 }
 .circular-slider {
+  width: 100vw;
   position: relative;
-  top: 1000px;
+  top: 1210px;
   left: 0px;
 }
 .bigtitle-musicproduct-chinese {
@@ -905,10 +910,10 @@ nav {
   z-index: 500;
 }
 .page03 {
-  width: 1920px;
+  width: 100vw;
   height: 1080px;
   position: absolute;
-  top: 2180px;
+  top: 2440px;
   left: 5px;
 }
 .page03-background {
@@ -921,7 +926,7 @@ nav {
 .section03 {
   position: relative;
   top: -2000px;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -972,9 +977,10 @@ nav {
   left: -50px;
 }
 #background03 {
-  scale: 1.3;
+  width: 100vw;
+  scale: 1.35;
   position: relative;
-  left: 1540px;
+  left: 1880px;
   margin-top: -100px;
 }
 .background03 {
@@ -987,10 +993,11 @@ nav {
 }
 
 .page04 {
+  width: 100vw;
   position: relative;
   height: 1080px;
-  top: 2070px;
-  left: -8px;
+  top: 2500px;
+  left: 10px;
 }
 .clear {
   clear: both;
@@ -1032,10 +1039,10 @@ a:hover {
 }
 .item-desc h1 {
   position: relative;
-  width: 30px;
+  width: 430px;
   height: 30px;
-  line-height: 10px;
-  top: -12px;
+  line-height: 20px;
+  top: -40px;
   font-size: 14px;
   display: inline-block;
   font-weight: 400;
@@ -1073,11 +1080,12 @@ a:hover {
 /******* Middle section CSS Start ******/
 /* -------- Landing page ------- */
 .game-section {
+  width: 100vw;
   padding: 60px 50px;
 }
 .game-section .owl-stage {
   position: absolute;
-  left: 900px;
+  left: 850px;
   margin: 15px 50px;
   display: flex;
   display: -webkit-flex;
@@ -1263,58 +1271,59 @@ a:hover {
   width: 1080px;
   height: 1920px;
   position: relative;
-  top: -907px;
+  top: -430px;
   left: 7px;
 }
 
 .page05-backgrounddown {
-  width: 1921px;
+  width: 100vw;
   height: 538px;
   left: -8px;
-  top: 3710px;
+  top: 3895px;
   position: absolute;
   background: #ff005c;
 }
 .page05-background-image {
+  scale: 1.2;
   width: 100%;
   height: 632px;
   left: -8px;
-  top: 3080px;
+  top: 3200px;
   position: absolute;
   z-index: 0;
 }
 .background-title {
-  width: 1200px;
+  width: 1380px;
   left: 200px;
-  top: 3170px;
+  top: 3240px;
   position: absolute;
   text-align: justify;
   color: #ffffff;
-  font-size: 96px;
+  font-size: 105px;
   font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
-  line-height: 110px;
+  line-height: 130px;
   word-wrap: break-word;
 }
 .page05-arrowrightup {
   width: 157px;
   height: 267px;
-  left: 1550px;
-  top: 3100px;
+  left: 1700px;
+  top: 3190px;
   position: absolute;
   overflow: hidden;
   z-index: 99;
 }
 .page05-arrowrightup:hover {
-  left: 1600px;
-  top: 3050px;
+  left: 2000px;
+  top: 2850px;
   transition: ease 0.8s;
-  transition: ease-out 1s;
+  transition: ease-out 2s;
 }
 .page05-CD01 {
   width: 290.94px;
   height: 294.21px;
-  left: 1685px;
+  left: 1830px;
   top: 3260px;
   position: absolute;
 
@@ -1324,7 +1333,7 @@ a:hover {
   width: 102.27px;
   height: 103.42px;
   left: 625px;
-  top: 3400px;
+  top: 3555px;
   position: absolute;
 }
 .page05-CD03 {
@@ -1337,20 +1346,21 @@ a:hover {
 .page05-CD04 {
   width: 91px;
   height: 93px;
-  left: 275px;
-  top: 3160px;
+  left: 278px;
+  top: 3250px;
   position: absolute;
 }
 .page05-CD05 {
   width: 203.56px;
   height: 203.56px;
   left: 1100px;
-  top: 3145px;
+  top: 3210px;
   position: absolute;
 }
 .page06 {
+  width: 100vw;
   position: relative;
-  top: -4178px;
+  top: -3412px;
   left: 0px;
 }
 .cursor {
@@ -1366,7 +1376,7 @@ a:hover {
   transition: transform 0.2s ease;
   transform-origin: center center;
   pointer-events: none;
-  z-index: 99;
+  z-index: 1000;
 }
 .grow,
 .grow-small {
@@ -1374,31 +1384,34 @@ a:hover {
   background: #ffffff;
   mix-blend-mode: difference;
   border: none;
-  z-index: 999;
+  z-index: 1000;
 }
 .grow-small {
   transform: scale(2.5);
-  z-index: 999;
   background-color: #ff005c;
   mix-blend-mode: lighten;
+  z-index: 1000;
 }
 .page06-background {
   position: absolute;
-  width: 1920px;
-  height: 2960px;
+  width: 100vw;
+  height: 3310px;
   background-color: #000000;
   top: 5495px;
   left: 0px;
 }
 .page06-background-pink01 {
+  scale: 1.15;
+  width: 100vw;
   position: relative;
   top: 520px;
-  left: 0px;
+  left: 130px;
 }
 .page06-background-pink02 {
+  scale: 1.15;
   position: relative;
-  top: 1300px;
-  left: 0px;
+  top: 1583px;
+  left: 130px;
 }
 .page06-carousel-image01 {
   width: 1007px;
@@ -1952,20 +1965,23 @@ a:hover {
   transform: scale(1.2);
 }
 .page07 {
+  width: 100vw;
   position: relative;
-  top: -5318px;
+  top: -4200px;
   left: 8px;
 }
 
 .page07-background {
+  scale: 1.2;
   position: relative;
-  left: -8px;
-  top: 7200px;
+  left: 80px;
+  top: 7270px;
 }
 .page07-character {
+  scale: 1.05;
   position: relative;
-  top: 6485px;
-  left: 10px;
+  top: 6540px;
+  left: 75px;
 }
 .page07-section01 {
   width: 1521.46px;
@@ -2000,7 +2016,7 @@ a:hover {
 }
 .page07-joinus {
   width: 200px;
-  left: 1400px;
+  left: 1500px;
   top: 8550px;
   position: absolute;
   text-align: justify;
@@ -2098,22 +2114,21 @@ a:hover {
 .page07-arrow-rightup {
   width: 47.59px;
   height: 47.59px;
-  left: 1590px;
-  top: 8560px;
+  left: 1700px;
+  top: 8555px;
   position: absolute;
   z-index: 99;
 }
 .page07-arrow-rightup:hover {
-  left: 1620px;
-  top: 8530px;
+  left: 2020px;
+  top: 8230px;
   transition: 1s ease;
 }
 .page08-background {
   position: absolute;
   width: 1920px;
   height: 1080px;
-  background-color: #ffffff;
-  top: 9210px;
+  top: 10200px;
   left: 0px;
 }
 .topline-position {
@@ -2124,18 +2139,19 @@ a:hover {
   position: absolute;
 }
 .topline {
-  width: 1520px;
+  width: 1645px;
   height: 0px;
   left: 200px;
-  top: 9305px;
+  top: 10480px;
   position: absolute;
-  border: 1px rgba(32.44, 32.44, 32.44, 0.4) solid;
+  border: 1px rgba(233, 185, 185, 0.4) solid;
 }
 .left-position {
+  scale: 1.4;
   width: 407px;
   height: 227px;
-  left: 195px;
-  top: 9445px;
+  left: 275px;
+  top: 10675px;
   position: absolute;
 }
 .left-section-line {
@@ -2167,8 +2183,8 @@ a:hover {
 }
 .page08-right-section {
   position: relative;
-  top: -7867px;
-  left: -45px;
+  top: -6680px;
+  left: 100px;
 }
 .page08-right-section-item01 {
   width: 896px;
@@ -2391,9 +2407,10 @@ a:hover {
   border: 1px rgba(32.44, 32.44, 32.44, 0.4) solid;
 }
 .page09-background {
+  scale: 1.15;
   position: relative;
-  top: 2418px;
-  left: 0px;
+  top: 3600px;
+  left: 140px;
 }
 
 .question-icon {
@@ -2406,18 +2423,19 @@ a:hover {
 .gotop-icon {
   display: flex;
   position: fixed;
-  top: 58%;
-  left: 1830px;
+  top: 63%;
+  left: 1950px;
   z-index: 99;
 }
 .footer {
+  scale: 1.1;
   width: 1920px;
   height: 540px;
-  left: -9px;
-  top: 11380px;
+  left: 85px;
+  top: 12675px;
   position: absolute;
 }
-h1 {
+.background-title-1 {
   color: #ff005c;
   font-family: "Dela Gothic One", sans-serif;
   font-weight: 900;
@@ -2433,13 +2451,13 @@ h1 {
   position: relative;
 }
 #text-1 {
-  top: -50px;
+  top: 1110px;
 }
 .recommend-info {
   scale: 0.9;
   position: relative;
-  top: 1000px;
-
+  top: 2150px;
+  left: 40px;
   width: 1800px;
   height: 750px;
   padding-left: 220px;
@@ -2470,8 +2488,8 @@ h1 {
 }
 .page09-character img {
   position: absolute;
-  top: 11045px;
-  left: 380px;
+  top: 12195px;
+  left: 355px;
   width: 150px;
   height: 100px;
   margin: 100px auto;
@@ -2479,16 +2497,17 @@ h1 {
   animation-timing-function: ease-in-out; /*動畫的速度曲線*/
   animation-iteration-count: infinite; /*動畫播放的次數*/
   animation-duration: 5s;
-  z-index: 999; /*動畫所花費的時間*/
+  z-index: 9; /*動畫所花費的時間*/
 
   /*可以簡寫為*/
   /* animation: scaleDraw 5s ease-in-out infinite; */
   /* -webkit-animation: scaleDraw 5s ease-in-out infinite; */
 }
 .era {
+  scale: 1.2;
   position: relative;
-  top: 1135px;
-  left: 360px;
+  top: 2330px;
+  left: 530px;
 }
 .era img {
   scale: 0.8;
@@ -2503,7 +2522,7 @@ h1 {
   display: flex;
   position: fixed;
   top: 50%;
-  left: 1830px;
+  left: 1950px;
   z-index: 99;
 }
 .footer-position {
@@ -2848,7 +2867,7 @@ h1 {
 .footer-line01 {
   width: 540px;
   height: 0px;
-  left: 646px;
+  left: 647px;
   top: 0px;
   position: absolute;
   transform: rotate(90deg);
@@ -2910,19 +2929,19 @@ h1 {
 }
 .subtitle02-1 a {
   position: relative;
-  left: 220px;
+  left: 165px;
   font-size: 18px;
   margin-top: 150px;
 }
 .subtitle02-1 img {
   scale: 0.8;
   position: relative;
-  left: 165px;
+  left: 135px;
   margin-top: -75px;
 }
 .subtitle03-1 a {
   position: relative;
-  left: -180px;
+  left: -285px;
   margin-top: 105px;
 }
 .subtitle03-1-1 a {
@@ -2933,22 +2952,39 @@ h1 {
 .subtitle03-1 img {
   scale: 0.8;
   position: relative;
-  left: -210px;
+  left: -290px;
   margin-top: -85px;
 }
 .subtitle04-1 a {
   position: relative;
-  left: -100px;
+  left: -205px;
   font-size: 18px;
   margin-top: 145px;
 }
 .subtitle04-1 img {
   scale: 0.8;
   position: relative;
-  left: -125px;
+  left: -190px;
   margin-top: -60px;
 }
 .description p {
   position: relative;
   left: 1000px;
+}
+.page05-character {
+  position: relative;
+  left: 470px;
+  top: 100px;
+}
+.page06-section01 {
+  scale: 1.1;
+  position: relative;
+  top: -450px;
+  left: 85px;
+}
+.page06-section02 {
+  scale: 1.12;
+  position: relative;
+  top: -450px;
+  left: 100px;
 }

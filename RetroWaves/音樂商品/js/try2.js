@@ -1,18 +1,23 @@
-document.getElementById('next2').onclick = function(){
-    const widthItem = document.querySelector('.item2').offsetWidth;
-    document.getElementById('formList2').scrollLeft += widthItem;
-}
-document.getElementById('prev2').onclick = function(){
-    const widthItem = document.querySelector('.item2').offsetWidth;
-    document.getElementById('formList2').scrollLeft -= widthItem;
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
 }
 
-document.getElementById('next2').onclick = function(){
-    const widthItem = document.querySelector('.item2').offsetWidth;
-    document.getElementById('formList2').scrollLeft += widthItem;
+function currentSlide(n) {
+  showSlides(slideIndex = n);
 }
-document.getElementById('prev2').onclick = function(){
-    const widthItem = document.querySelector('.item2').offsetWidth;
-    document.getElementById('formList2').scrollLeft -= widthItem;
-}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
   
+  slides[slideIndex-1].style.display = "block";  
+}

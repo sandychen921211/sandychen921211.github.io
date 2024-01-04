@@ -1,0 +1,558 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+* {
+  font-family: "Noto Sans TC";
+}
+
+@import url(https://fonts.googleapis.com/earlyaccess/delagothicone.css);
+* {
+  font-family: "Dela Gothic One";
+}
+
+.material-symbols-rounded {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+
+/* START */
+
+.Openfile {
+  font-family: "Noto Sans TC";
+  font-weight: 300;
+}
+
+/*h1 {
+  font-weight: 400;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 5rem;
+}*/
+
+a {
+  text-decoration: none;
+}
+
+/* Nav tabs*/
+
+#Container {
+  padding-left: 16.5vw;
+  padding-right: 9.5vw;
+  padding-top: 76vh;
+  padding-bottom: 20vh;
+}
+
+.tabs-nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+.tabs-nav li {
+  display: inline-block;
+  font-family: "Dela Gothic One";
+  letter-spacing: 2px;
+  font-size: 28px;
+  background: rgba(0, 0, 0, 0.78);
+  color: #fefefe;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  border-radius: 20px 20px 0 0;
+  border-color: #000 4px;
+  margin-right: -3px;
+}
+
+.tabs-nav a {
+  display: block;
+  padding: 18px 28px;
+  color: #fff;
+}
+
+/* Active tab */
+
+.tabs-nav li.active {
+  background: #fff;
+  color: #000;
+}
+
+.tabs-nav li.active a {
+  color: inherit;
+}
+
+/* Tab content */
+
+.tabs-content {
+  border: 1px solid #34495e;
+  padding: 10px;
+  background: #fff;
+  margin-top: -1px;
+  overflow: hidden;
+  border-radius: 0 20px 20px 20px;
+  border-color: #000 10px;
+}
+
+.tabs-content IMG {
+  margin-right: 10px;
+}
+/* Hide all but first content div */
+
+.tabs-content div:not(:first-child) {
+  display: none;
+}
+
+/* Content Style */
+/* tab1 */
+
+#tab1 {
+  padding: 3vw;
+  padding-bottom: 8vh;
+}
+
+.collect li {
+  display: inline-block;
+  margin-right: 1.5vw;
+}
+
+.collect .oo a {
+  color: #ffffff;
+  background-color: #ff005c;
+  /*border: 1.5px solid var(--neutral-07, #2c2f24);*/
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Noto Sans TC";
+  width: 116px;
+  height: 30px;
+  border-radius: 100px;
+  display: inline-flex;
+  vertical-align: middle;
+  padding: 5px;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.collect .oo a:hover {
+  color: #000;
+  transition: ease-in 0.2s;
+}
+
+.collect .xx a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #000000;
+  /*border: 1.5px solid var(--neutral-07, #2c2f24);*/
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Noto Sans TC";
+  width: 116px;
+  height: 30px;
+  border-radius: 100px;
+  display: inline-flex;
+  vertical-align: middle;
+  padding: 5px;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.collect .xx a:hover {
+  color: #ffffff;
+  background-color: #ff005c;
+  transition: ease-in 0.2s;
+}
+
+.collect_view {
+  color: #000000;
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 5vh;
+}
+
+.collect_view p {
+  font-size: 16px;
+  margin-left: 1vw;
+}
+
+.collect_view a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: "Noto Sans TC";
+  display: inline-block;
+}
+
+#grid_view {
+  margin-left: 52vw;
+}
+
+.List {
+  display: inline-flex;
+}
+
+.collect_list1 {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5vw;
+  padding: 5vh 0;
+  border-bottom: 1px #606060 solid;
+  opacity: 1;
+}
+
+.collect_list1:hover {
+  opacity: 0.8;
+  transition: ease-in 0.2s;
+}
+
+.collect_list2 {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5vw;
+  padding: 5vh 0;
+  border-bottom: 1px #606060 solid;
+  opacity: 1;
+}
+
+.collect_list2:hover {
+  opacity: 0.8;
+  transition: ease-in 0.2s;
+}
+
+.collect_list3 {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5vw;
+  padding: 5vh 0;
+  border-bottom: 1px #606060 solid;
+  opacity: 1;
+}
+
+.collect_list3:hover {
+  opacity: 0.8;
+  transition: ease-in 0.2s;
+}
+
+/* TAB1 */
+
+.list_songs1 {
+  margin-left: 1vw;
+  opacity: 1;
+}
+
+.list_songs1:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: ease-in 0.2s;
+}
+
+.list_songs2 {
+  margin-left: 1vw;
+  opacity: 1;
+}
+
+.list_songs2:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: ease-in 0.2s;
+}
+
+.list_songs3 {
+  margin-left: 1vw;
+  opacity: 1;
+}
+
+.list_songs3:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: ease-in 0.2s;
+}
+
+.list_text1 h3 a {
+  color: black;
+  text-decoration: none;
+  font-size: 36px;
+  font-family: Noto Sans TC;
+  font-weight: 900;
+  letter-spacing: 1.44px;
+  /*padding-top: 5vh;
+  padding-left: 2.8vw;*/
+}
+
+.list_text2 h3 a {
+  color: black;
+  text-decoration: none;
+  font-size: 36px;
+  font-family: Noto Sans TC;
+  font-weight: 900;
+  letter-spacing: 1.44px;
+}
+
+.list_text3 h3 a {
+  color: black;
+  text-decoration: none;
+  font-size: 36px;
+  font-family: Noto Sans TC;
+  font-weight: 900;
+  letter-spacing: 1.44px;
+}
+
+h3 a:hover {
+  color: #ff005c;
+  transition: ease-in 0.2s;
+}
+
+.list_text1 p {
+  width: 450px;
+  color: #606060;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  word-wrap: break-word;
+  margin-top: 2vh;
+}
+
+.list_text2 p {
+  width: 450px;
+  color: #606060;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  word-wrap: break-word;
+  margin-top: 2vh;
+}
+
+.list_text3 p {
+  width: 450px;
+  color: #606060;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  word-wrap: break-word;
+  margin-top: 2vh;
+}
+
+.List .arrow {
+  margin-left: 7.6vw;
+  opacity: 1;
+}
+
+.arrow:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: ease-in 0.2s;
+}
+
+/* tab2 */
+
+#tab2 {
+  padding: 3vw;
+  padding-bottom: 8vh;
+}
+
+.Billboard {
+  display: inline-flex;
+}
+
+.BB_1 {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5vw;
+  padding: 5vh 0;
+  border-bottom: 1px #606060 solid;
+  opacity: 1;
+}
+
+.BB_1:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: ease-in 0.2s;
+}
+
+.article_text1 {
+  width: 690px;
+  margin-left: 1.5vw;
+}
+
+.article_text1 p {
+  color: #606060;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  word-wrap: break-word;
+  margin-top: 2vh;
+  padding-bottom: 5vh;
+}
+
+.article_text1 .black {
+  color: #000;
+  font-weight: 400;
+}
+
+.article_text1 h3 a {
+  color: black;
+  text-decoration: none;
+  font-size: 22px;
+  font-family: Noto Sans TC;
+  font-weight: 900;
+  letter-spacing: 1.44px;
+}
+
+.article_text1 h3 a:hover {
+  color: #ff005c;
+  transition: ease-in 0.2s;
+}
+
+.interaction {
+  margin-left: -15px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.interaction #text {
+  font-weight: 600;
+}
+
+.interaction img {
+  margin-left: 15px;
+}
+
+.BB_article1 {
+  margin-left: -2vw;
+  overflow: hidden;
+}
+
+.BB_article1:hover {
+  opacity: 0.5;
+  transform: scale(1.03);
+  transition: ease-in 0.2s;
+}
+
+.Billboard .arrow {
+  margin-left: -1vw;
+  margin-top: -15vh;
+}
+
+/* TAB3 */
+
+#tab3 {
+  padding: 3vw;
+  padding-bottom: 8vh;
+}
+
+.Purchased {
+  display: inline-flex;
+  width: 19vw;
+}
+
+.PP_1 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5vw;
+  padding: 5vh;
+  margin-top: 2vh;
+  border-bottom: 1px #606060 solid;
+  opacity: 1;
+  flex-wrap: nowrap;
+}
+
+.PP_1:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: ease-in 0.2s;
+}
+
+.PP_text1 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.PP_Title {
+  display: inline-flex;
+}
+
+.PP_1 h3 {
+  color: black;
+  width: 247px;
+  font-size: 24px;
+  font-family: "Dela Gothic One";
+  font-weight: 400;
+  word-wrap: break-word;
+  line-height: 30px;
+}
+
+.PP_1 h3 a {
+  color: #000;
+}
+
+.PP_1 h3 a:hover {
+  color: #ff005c;
+  transition: ease-in 0.2s;
+}
+
+.PP_1 .arrow {
+  margin-top: -2.6vh;
+  margin-left: 1vw;
+}
+
+.PP_p {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 6vh;
+  color: #606060;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+}
+
+.PP_p3 {
+  margin-top: 8.8vh;
+  display: inline-flex;
+  align-items: center;
+  color: #606060;
+  font-size: 16px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+}
+
+.PP_p img {
+  margin-left: 1vw;
+}
+
+.PP_p3 img {
+  margin-left: 1vw;
+}
+
+.PP_time {
+  margin-top: 2vh;
+}
+
+.PP1 {
+  outline: 0;
+  border: 0px solid;
+  margin: 10px 0px 0px 0px;
+  transition: all 5s ease-in-out;
+  /*Change time as per need and add vendor prefixes*/
+  position: relative;
+}
+
+.PP1:hover {
+  /* -360deg is for anti-clockwise 100% rotation */
+  transform: rotate(-360deg);
+  -ms-transform: rotate(-360deg); /* IE 9 */
+  -webkit-transform: rotate(-360deg); /* Chrome, Safari, Opera */
+}

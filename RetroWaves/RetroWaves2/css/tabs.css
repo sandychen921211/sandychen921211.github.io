@@ -6,11 +6,13 @@
   z-index: -99;
 }*/
 .page02-background {
+  scale: 1.2;
   background-color: #000;
-  width: 1920px;
+  width: 200vw;
   background-position-y: -200px;
   position: relative;
   top: 133px;
+  left: 250px;
 }
 /*.black-background {
   position: relative;
@@ -24,6 +26,7 @@
   width: 1920px;
   position: relative;
   top: -1830px;
+  left: 80px;
   padding: 35px;
   padding-right: 0px;
   z-index: 1;
@@ -180,20 +183,31 @@
   margin-top: 35px;
   margin-bottom: 25px;
 }
-.content02 ul:hover {
+.content02 ul:hover a {
   color: #ff005c;
+  transition: ease-in 0.2s;
+}
+.content02 ul:hover li {
+  color: #ff005c;
+  transition: ease-in 0.2s;
+}
+.content02 ul:hover p {
+  color: #ff005c;
+  transition: ease-in 0.2s;
+}
+.content02 ul:hover img {
+  background-color: #ff005c;
+  border-radius: 50%;
+  transition: ease-in 0.2s;
+}
+.content02 ul:hover {
   border-bottom: #ff005c solid 2px;
   transition: ease-in 0.2s;
 }
-
 .content02 ul li {
   position: relative;
   top: -10px;
   float: left;
-}
-.content02 ul li a:hover {
-  color: #ff005c;
-  transition: ease-in 0.2s;
 }
 
 .content02 ul li img {
@@ -202,12 +216,6 @@
   margin-right: 20px;
   position: relative;
   top: -2px;
-}
-.content02 ul li img:hover {
-  background-color: #ff005c;
-  border-radius: 50%;
-  scale: 1.3;
-  transition: ease-in 0.2s;
 }
 
 .content02 h3 img {
@@ -241,8 +249,8 @@
 }
 .page02-arrow :hover {
   position: relative;
-  padding-bottom: 60px;
-  margin-left: 1170px;
+  padding-bottom: 80px;
+  margin-left: 1270px;
   transition: ease-in 1s;
 }
 .keyword-group {

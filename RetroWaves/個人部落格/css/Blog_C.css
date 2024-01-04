@@ -19,6 +19,10 @@ body {
   font-family: "Noto Sans TC";
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 #menu {
   position: fixed;
   /* right: 0; */
@@ -32,7 +36,7 @@ body {
   background-color: #ff005c;
   color: #ffffff;
   width: auto;
-  height: 55px;
+  height: 66px;
   padding-left: 8vw;
 }
 
@@ -41,10 +45,10 @@ body {
   position: absolute;
   top: 9%;
   margin: 2px;
-  margin-left: 20vw;
+  margin-left: 16vw;
   background: white;
-  width: 600px;
-  height: 28px;
+  width: 900px;
+  height: 36px;
   border-radius: 155px;
   border: 1px black solid;
   display: flex;
@@ -59,7 +63,7 @@ body {
 
 .Header .Functions {
   position: absolute;
-  right: 10vw;
+  right: 11vw;
   top: 13%;
   display: inline-flex;
   margin: 6px;
@@ -69,13 +73,17 @@ body {
   padding-left: 1vw;
 }
 
+.like {
+  padding-top: 0.2vh;
+}
+
 /* 00_Nav */
 
 .Nav {
   background-color: #000000;
   color: #ffffff;
   width: auto;
-  height: 35px;
+  height: 45px;
   padding-left: 9.3vw;
 }
 
@@ -84,8 +92,8 @@ body {
   text-decoration: none;
   display: inline;
   font-family: Noto Sans TC;
-  font-size: 14px;
-  font-weight: 250;
+  font-size: 18px;
+  font-weight: 400;
   word-wrap: break-word;
   overflow: hidden;
 }
@@ -93,8 +101,8 @@ body {
 .Nav a:hover {
   color: #ff005c;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 600;
   transition: ease-in-out 0.2s;
 }
 
@@ -107,10 +115,11 @@ body {
   padding-right: 11.1vw;
 }
 
-/* 01_個資 */
+/* 01_å€‹è³‡ */
 
-.Profile {
+body {
   background-image: url(../img/Pink\ Gradient.svg);
+  top: 5vh;
   background-repeat: no-repeat;
   background-size: cover;
   max-width: 100%;
@@ -131,11 +140,12 @@ body {
 
 .info .left {
   color: #000000;
+  font-size: 18px;
   font-weight: 400;
   display: block;
   position: absolute;
-  padding-left: 20vw;
-  padding-top: 37.2vw;
+  padding-left: 29vw;
+  padding-top: 27.8vw;
 }
 
 .info .right {
@@ -144,8 +154,8 @@ body {
   display: block;
   position: absolute;
   padding-left: 58vw;
-  padding-top: 8.8vw;
-  line-height: 4.6vw;
+  padding-top: 6.2vw;
+  line-height: 3.6vw;
 }
 
 .info .right a {
@@ -169,8 +179,8 @@ body {
 
 .info .genres {
   display: flex;
-  padding-left: 43vw;
-  padding-top: 26vw;
+  padding-left: 44.8vw;
+  padding-top: 20vw;
   color: #ffffff;
 }
 
@@ -202,7 +212,7 @@ body {
 
 .info .genres2 {
   display: flex;
-  padding-left: 43vw;
+  padding-left: 44.8vw;
   /*padding-top: 20vw;*/
 }
 
@@ -235,19 +245,19 @@ body {
   font-family: Noto Sans TC;
   font-weight: 900;
   letter-spacing: 1.44px;
-  padding-top: 15vw;
+  padding-top: 13vw;
   padding-left: 45vw;
 }
 
-/* 02_資料夾 */
+/* 02_è³‡æ–™å¤¾ */
 
 .Files {
   overflow: hidden;
   width: 1920px;
 }
 
-h1 {
-  padding-top: 5vw;
+.Wrapper h1 {
+  padding-top: 20vh;
   font-family: "Dela Gothic One";
   font-size: 128px;
   color: #ff005c;
@@ -258,24 +268,21 @@ h1 {
   text-align: right;
 }
 
-.wrapper {
-  position: relative;
-}
-
 .Status {
   padding-top: 22vw;
-  padding-left: 10vw;
+  padding-left: 16vw;
   position: absolute;
   display: flex;
   align-items: center;
 }
 
 .Status h2 {
+  height: 63px;
   position: absolute;
-  margin-top: -17vh;
-  padding-left: 15vw;
+  margin-top: -11vh;
+  padding-left: 12vw;
   font-family: "Dela Gothic One";
-  font-size: 55px;
+  font-size: 50px;
   color: #ffffff;
   overflow: hidden;
 }
@@ -283,15 +290,16 @@ h1 {
 .Status h2:hover {
   position: absolute;
   padding-top: 0%;
-  padding-left: 15vw;
+  padding-left: 12vw;
   font-family: "Dela Gothic One";
-  font-size: 55px;
+  font-size: 51px;
   color: #ff005dc5;
   transition: ease-in-out 0.2s;
 }
 
 .setting {
-  padding-left: 45vw;
+  padding-left: 39vw;
+  margin-top: -2vh;
   color: #ffffff;
   overflow: hidden;
 }
@@ -318,8 +326,8 @@ h1 {
   justify-content: space-evenly;
   align-items: center;
   position: absolute;
-  padding-top: 0%;
-  margin-left: 63vw;
+  margin-top: -1vh;
+  margin-left: 54vw;
   overflow: hidden;
 }
 
@@ -332,8 +340,9 @@ h1 {
   color: #ff005c;
   text-decoration: none;
   background-color: #000000a1;
+  margin-top: -0.8vh;
   width: 204px;
-  height: 80px;
+  height: 84px;
   border-radius: 30px;
   display: inline-flex;
   vertical-align: middle;
@@ -344,282 +353,35 @@ h1 {
   transition: ease-in-out 0.2s;
 }
 
-.Files .Openfile {
-  background-image: url(../img/FILE.svg);
-  width: 1227px;
-  height: 1389px;
-  background-repeat: no-repeat;
-  max-width: 100%;
-  display: block;
-  background-position: center;
-  padding-top: 72vw;
-  padding-left: 18vw;
-}
+/* Tab.css */
 
-.collect ul {
+/* 3 ç•™è¨€æ¿ */
+
+.CommentBoard {
   position: absolute;
-  margin-top: -65vh;
-  margin-left: -6.2vw;
-}
-
-.collect li {
-  display: inline;
-  margin-right: 2vw;
-}
-
-.collect li a {
-  display: inline-block;
-  text-decoration: none;
-  color: #ffffff;
-  margin-inline-end: 10px;
-}
-
-.collect .oo {
-  color: #ffffff;
-  background-color: #ff005c;
-  /*border: 1.5px solid var(--neutral-07, #2c2f24);*/
-  font-size: 16px;
-  font-weight: 600;
-  font-family: "Noto Sans TC";
-  width: 116px;
-  height: 30px;
-  border-radius: 100px;
-  display: inline-flex;
-  vertical-align: middle;
-  padding: 5px;
-  flex-direction: column-reverse;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.collect .xx a {
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #000000;
-  /*border: 1.5px solid var(--neutral-07, #2c2f24);*/
-  font-size: 16px;
-  font-weight: 600;
-  font-family: "Noto Sans TC";
-  width: 116px;
-  height: 30px;
-  border-radius: 100px;
-  display: inline-flex;
-  vertical-align: middle;
-  padding: 5px;
-  flex-direction: column-reverse;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.collect .xx a:hover {
-  color: #ffffff;
-  background-color: #ff005c;
-  transition: ease-in 0.2s;
-}
-
-.collect_view {
-  color: #000000;
-  position: absolute;
-  display: inline-flex;
-  margin-top: -55vh;
-  margin-left: -6.2vw;
-}
-
-.collect_view p {
-  font-size: 16px;
-  padding-top: 3px;
-}
-
-.collect_view a {
-  text-decoration: none;
-  color: #000000;
-  font-size: 16px;
-  font-weight: 800;
-  font-family: "Noto Sans TC";
-  margin-left: -43.5vw;
-}
-
-#grid_view {
-  margin-left: 65.5vw;
-}
-
-.List {
-  width: 1050px;
-  display: inline-flex;
-  padding-top: 15px;
-  padding-bottom: 5px;
-  margin-left: -2vw;
-  border-bottom: 1px #606060 solid;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.collect_list1 {
-  width: 1060px;
-  height: 190px;
-  margin-top: -75vh;
-  display: inline-flex;
-}
-
-.list_songs1 {
-  margin-top: -14vh;
-  margin-left: -2vw;
-}
-
-.list_text1 h3 a {
-  color: black;
-  text-decoration: none;
-  font-size: 36px;
-  font-family: Noto Sans TC;
-  font-weight: 900;
-  letter-spacing: 1.44px;
-  padding-top: 5vh;
-  padding-left: 2.8vw;
-}
-
-.list_text2 h3 a {
-  color: black;
-  text-decoration: none;
-  font-size: 36px;
-  font-family: Noto Sans TC;
-  font-weight: 900;
-  letter-spacing: 1.44px;
-  padding-top: 5vh;
-  padding-left: -8vw;
-}
-
-.list_text3 h3 a {
-  color: black;
-  text-decoration: none;
-  font-size: 36px;
-  font-family: Noto Sans TC;
-  font-weight: 900;
-  letter-spacing: 1.44px;
-  padding-top: 5vh;
-  padding-left: -8vw;
-}
-
-h3 a:hover {
-  color: #ff005c;
-  transition: ease-in 0.2s;
-}
-
-.list_text1 p {
-  width: 397px;
-  color: #606060;
-  font-size: 16px;
-  font-family: Noto Sans TC;
-  font-weight: 700;
-  letter-spacing: 1.6px;
-  word-wrap: break-word;
   margin-top: 2vh;
-  padding-top: 0;
-  padding-left: 3vw;
 }
-
-.arrow {
-  margin-top: -19vh;
-  padding-left: 20.5vw;
-}
-
-.collect_list2 {
-  width: 1060px;
-  height: 247px;
-  margin-top: 12vh;
-  display: inline-flex;
-}
-
-.list_songs2 {
-  margin-top: -14vh;
-  margin-left: -2vw;
-}
-
-.list_text2 h3 {
-  color: black;
-  font-size: 36px;
-  font-family: Noto Sans TC;
-  font-weight: 900;
-  letter-spacing: 1.44px;
-  margin-top: 3vh;
-  padding-left: 3vw;
-}
-
-.list_text2 p {
-  width: 440px;
-  color: #606060;
-  font-size: 16px;
-  font-family: Noto Sans TC;
-  font-weight: 700;
-  letter-spacing: 1.6px;
-  word-wrap: break-word;
-  margin-top: 2vh;
-  padding-top: 0;
-  padding-left: 3vw;
-}
-
-.arrow2 {
-  margin-top: -19vh;
-  padding-left: 18vw;
-}
-
-.collect_list3 {
-  width: 1060px;
-  height: 247px;
-  margin-top: 12vh;
-  display: inline-flex;
-}
-
-.list_songs3 {
-  margin-top: -14vh;
-  margin-left: -2vw;
-}
-
-.list_text3 h3 {
-  color: black;
-  font-size: 36px;
-  font-family: Noto Sans TC;
-  font-weight: 900;
-  letter-spacing: 1.44px;
-  margin-top: 3vh;
-  padding-left: 3vw;
-}
-
-.list_text3 p {
-  width: 400px;
-  color: #606060;
-  font-size: 16px;
-  font-family: Noto Sans TC;
-  font-weight: 700;
-  letter-spacing: 1.6px;
-  word-wrap: break-word;
-  margin-top: 2vh;
-  padding-top: 0;
-  padding-left: 3vw;
-}
-
-/* 3 留言板 */
 
 .wrapper2 {
   position: relative;
-  padding-top: -20vh;
-}
-
-.Pink_Board span img {
-  width: 1520px;
-  margin-top: -15vh;
+  padding-top: -15vh;
 }
 
 #Comment h1 {
   color: #ffffff;
-  margin-top: -55vh;
+  margin-top: 0vh;
 }
 
-/* 4 廣告 */
+/* 4 å»£å‘Š */
+.AD {
+  position: absolute;
+  margin-top: 403vh;
+}
 
 #Recommend h1 {
   color: #ffffff;
-  margin-top: -130vh;
+  font-size: 80px;
+  margin-top: -118vh;
 }
 
 .ADS {
@@ -627,30 +389,35 @@ h3 a:hover {
   align-items: flex-end;
 }
 
+/*.AD_1 {
+  overflow: hidden;
+}*/
+
 .AD_1 span img {
-  width: 770px;
+  position: relative;
+  width: 1020px;
   margin-left: -2vw;
-  margin-top: -100vw;
+  margin-top: -120vh;
   transform-origin: 0 0;
-  transition: transform 0.25s, visibility 0.25s ease-in;
+  overflow: hidden;
 }
 
-.AD_1 span img:hover {
-  opacity: 0.75%;
-  transform: scale(2);
+.AD_1 span:hover img {
+  transform: scale(1.03);
+  transition: all 0.6s;
 }
 
 .AD_2 span img {
-  width: 770px;
-  margin-left: -1.5vw;
+  position: relative;
+  width: 1020px;
+  margin-left: 0.6vw;
   margin-top: -100vw;
   transform-origin: 0 0;
-  transition: transform 0.25s, visibility 0.25s ease-in;
+  transition: all 0.6s;
 }
 
 .AD_2 span img:hover {
-  opacity: 0.75%;
-  transform: scale(2);
+  transform: scale(1.03);
 }
 
 h4 {
@@ -661,7 +428,7 @@ h4 {
   font-family: PingFang TC;
   font-weight: 600;
   word-wrap: break-word;
-  top: -59vh;
+  top: -64vh;
   left: 8vw;
 }
 
@@ -674,8 +441,18 @@ h5 {
   font-weight: 700;
   letter-spacing: 5.12px;
   word-wrap: break-word;
-  top: -56vh;
+  top: -62.8vh;
   left: 8vw;
+}
+
+.arrow3 {
+  margin-top: -81.5vh;
+  position: absolute;
+  padding-left: 36.5vw;
+}
+
+.AD_2 .arrow3 {
+  padding-top: 11vh;
 }
 
 h6 {
@@ -683,9 +460,9 @@ h6 {
   z-index: 10;
   position: relative;
   width: 580px;
-  font-size: 16px;
+  font-size: 18px;
   font-family: Noto Sans TC;
-  font-weight: 200;
+  font-weight: 300;
   line-height: 29.97px;
   letter-spacing: 1.2px;
   word-wrap: break-word;
@@ -703,6 +480,8 @@ footer {
   width: 100%;
   display: block;
   height: 300px;
+  position: absolute;
+  top: 6857px;
 }
 
 .footer-position {
@@ -715,9 +494,9 @@ footer {
   height: 300px;
   width: 1920px;
   /*height: 50px;*/
-  padding-left: 9px;
-  padding-top: 0px;
-  position: absolute;
+  /*padding-left: 9px;
+  padding-top: 600vh
+  position: absolute;*/
   background: black;
   border-top: 2px white solid;
 }
@@ -1062,7 +841,7 @@ footer {
   position: absolute;
 }
 
-/* 直線 */
+/* ç›´ç·š */
 /*.footer-line01 {
   width: 540px;
   height: 0px;
@@ -1084,7 +863,7 @@ footer {
   border: 1px white solid;
 }
 
-/* 橫線 */
+/* æ©«ç·š */
 /*.footer-line03 {
   width: 1944px;
   height: 40px;

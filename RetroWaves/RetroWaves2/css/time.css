@@ -5,11 +5,12 @@
 }
 
 .loading {
+  scale: 1.2;
   position: relative;
   display: flex;
   gap: 15px;
-  top: 1050px;
-  left: 420px;
+  top: 2225px;
+  left: 595px;
 }
 
 .loading span {

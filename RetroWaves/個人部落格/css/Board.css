@@ -1,0 +1,203 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+* {
+  font-family: "Noto Sans TC";
+}
+
+@import url(https://fonts.googleapis.com/earlyaccess/delagothicone.css);
+* {
+  font-family: "Dela Gothic One";
+}
+
+.starry_night span img {
+  width: 1650px;
+  left: 9vw;
+  top: 65vh;
+  position: relative;
+  z-index: 0;
+}
+
+.comments::-webkit-scrollbar {
+  display: none;
+}
+
+.comments {
+  z-index: 11;
+  height: 1120px;
+  position: absolute;
+  margin-top: -146vh;
+  margin-left: 10vw;
+  padding-left: 41vw;
+  overflow: scroll;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.cmt_left {
+  margin-left: -30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cmt_left h1 {
+  font-family: "Dela Gothic One";
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  color: white;
+  position: absolute;
+  margin-top: -20vh;
+}
+
+.others {
+  padding-top: 21vh;
+}
+
+.others h2 {
+  color: white;
+  font-size: 19px;
+  font-family: "Noto Sans TC";
+  font-weight: 400;
+}
+
+.others p {
+  color: white;
+  font-family: "Noto Sans TC";
+  font-size: 14px;
+  font-weight: 200;
+  margin-left: 31vw;
+}
+
+.time {
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.time h2 {
+  margin-top: -5vh;
+  position: absolute;
+  background-color: black;
+  padding: 20px;
+  border-radius: 0px 40px 40px 40px;
+  border: 0.7px rgba(255, 255, 255, 0.784) solid;
+}
+
+.time img {
+  margin-left: -12vw;
+}
+
+.others_words {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: -22vh;
+  margin-left: 1vw;
+}
+
+.others {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+#video {
+  padding-top: 3vh;
+  margin-left: -0.5vw;
+}
+
+#video p {
+  margin-left: 5vw;
+}
+
+#LE p {
+  margin-left: 33vw;
+}
+
+.cmt_right {
+  margin-left: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.cmt_right p {
+  color: white;
+  font-size: 14px;
+  /*margin-left: -17vw;*/
+  font-weight: 200;
+}
+
+.me .new {
+  margin-top: 75vh;
+}
+
+.me {
+  margin-left: -2vw;
+  margin-top: 80vh;
+  color: black;
+}
+
+.me h2 {
+  position: absolute;
+  margin-left: -17vw;
+  background-color: #d9d9d9;
+  color: black;
+  font-size: 19px;
+  font-weight: 500;
+  padding: 20px;
+  border-radius: 40px 0px 40px 40px;
+  border: 0.7px rgba(255, 255, 255, 0.784) solid;
+}
+
+.buttom h5 {
+  font-family: "Dela Gothic One";
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  margin-left: 71.5vw;
+  margin-top: 295vh;
+}
+
+.buttom h5:hover {
+  color: #ff005c;
+  position: absolute;
+  margin-left: 71.5vw;
+  margin-top: 295vh;
+  cursor: pointer;
+}
+
+.sticker {
+  position: absolute;
+  margin-left: 13vw;
+  margin-top: -30vh;
+  cursor: pointer;
+  z-index: 12;
+}
+
+.status {
+  z-index: 12;
+}
+
+.machine span img {
+  position: absolute;
+  margin-top: -222vh;
+  padding-left: -7px;
+  width: 2020px;
+  z-index: 10;
+}
+
+.status .top {
+  padding-top: -50vh;
+}
+
+.status .top h4 {
+  color: black;
+  font-size: 48px;
+  font-family: "Dela Gothic One";
+  font-weight: 400;
+  line-height: 71.94px;
+  letter-spacing: 0.48px;
+  word-wrap: break-word;
+  margin-top: -50vh;
+}
