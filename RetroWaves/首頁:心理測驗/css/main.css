@@ -64,6 +64,7 @@ body {
   position: absolute;
   top: 5%;
   margin-left: 42%;
+  padding-left: -100px;
   width: 550px;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
