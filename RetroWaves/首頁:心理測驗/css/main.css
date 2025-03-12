@@ -63,7 +63,7 @@ body {
 .description {
   position: absolute;
   top: 5%;
-  margin-left: 46%;
+  margin-left: 55%;
   width: 550px;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -2424,7 +2424,7 @@ a:hover {
   display: flex;
   position: fixed;
   top: 63%;
-  left: 1950px;
+  left: 1920px;
   z-index: 99;
 }
 .footer {

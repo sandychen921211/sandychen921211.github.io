@@ -1142,7 +1142,7 @@ a {
   border-radius: 0px;
   background-color: #ff005c;
   border: none;
-  top: 7px;
+  top: -37px;
   left: 25px;
   padding: 13px;
   padding-top: 15px;
@@ -1153,7 +1153,7 @@ a {
 .exclusive {
   position: relative;
   left: 470px;
-  top: -125px;
+  top: -250px;
   padding: 15px;
   border: none;
   background-color: #0075ff;
@@ -1307,6 +1307,10 @@ a {
   top: 390px;
   left: 1950px;
   z-index: 99;
+}
+.gotop-icon button {
+  border: none;
+  background: none;
 }
 .footer {
   scale: 1.1;

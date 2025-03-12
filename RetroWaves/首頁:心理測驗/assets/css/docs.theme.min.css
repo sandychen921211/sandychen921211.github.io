@@ -1928,17 +1928,11 @@ button,
   display: inline-block;
   padding: 1rem 2rem 1.0625rem 2rem;
   font-size: 1rem;
-  background-color: #008cba;
-  border-color: #007095;
   color: #fff;
-  transition: background-color 300ms ease-out;
 }
 button:hover,
 button:focus,
 .button:hover,
-.button:focus {
-  background-color: #007095;
-}
 button:hover,
 button:focus,
 .button:hover,
