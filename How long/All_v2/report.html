@@ -130,9 +130,15 @@
     </div>
 
     <script>
-      setTimeout(() => {
-        window.location.href = "./qrcode.html";
-      }, 5000);
+      const params = new URLSearchParams(location.search);
+      const isQR = params.get("src") === "qr";
+
+      // 只有 kiosk（沒有 src=qr）才跳 qrcode
+      if (!isQR) {
+        setTimeout(() => {
+          window.location.href = "./qrcode.html";
+        }, 5000);
+      }
     </script>
   </body>
 </html>
