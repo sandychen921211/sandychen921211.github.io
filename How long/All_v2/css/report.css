@@ -413,3 +413,31 @@ body {
   color: #e4ff1c;
   letter-spacing: 0.06em;
 }
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+/* 用 svh 解決 iOS  Safari 上下工具列高度變動 */
+#viewport {
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 讓舞台可以用 transform 縮放置中 */
+#reportApp {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 0 0;
+}

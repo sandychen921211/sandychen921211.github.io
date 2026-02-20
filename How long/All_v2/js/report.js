@@ -19,7 +19,7 @@ function resizeStage() {
   const designH = 1920;
   const scale = Math.min(
     window.innerWidth / designW,
-    window.innerHeight / designH
+    window.innerHeight / designH,
   );
   if (app) app.style.transform = `translate(0px, 0px) scale(${scale})`;
 }
@@ -239,10 +239,10 @@ if (gifSlotEl) {
       actionType === "neck"
         ? 0
         : actionType === "arms"
-        ? 1
-        : actionType === "legs"
-        ? 2
-        : 0;
+          ? 1
+          : actionType === "legs"
+            ? 2
+            : 0;
 
     imgs.forEach((img, i) => {
       img.style.display = i === idx ? "block" : "none";
@@ -290,3 +290,34 @@ function updatePills() {
 }
 updatePills();
 setInterval(updatePills, 30 * 1000);
+
+(function fitReportStage() {
+  const stage = document.getElementById("reportApp");
+  const viewport = document.getElementById("viewport");
+  if (!stage || !viewport) return;
+
+  // ✅ 這裡填你 report 設計稿的基準尺寸（很重要）
+  // 例如你原本是用 1920x1080 或 1080x1920，就填那個
+  const DESIGN_W = 1080;
+  const DESIGN_H = 1920;
+
+  function applyScale() {
+    const vw = viewport.clientWidth;
+    const vh = viewport.clientHeight;
+
+    const scale = Math.min(vw / DESIGN_W, vh / DESIGN_H);
+
+    // 置中：先把 stage 原點拉到螢幕中央，再用 translate 把縮放後尺寸置中
+    const scaledW = DESIGN_W * scale;
+    const scaledH = DESIGN_H * scale;
+
+    const left = (vw - scaledW) / 2;
+    const top = (vh - scaledH) / 2;
+
+    stage.style.transform = `translate(${left}px, ${top}px) scale(${scale})`;
+  }
+
+  window.addEventListener("resize", applyScale);
+  window.addEventListener("orientationchange", applyScale);
+  applyScale();
+})();
