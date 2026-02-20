@@ -1,0 +1,48 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: system-ui, "Noto Sans TC";
+}
+
+#viewport {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.stage {
+  display: grid;
+  gap: 24px;
+  place-items: center;
+}
+
+.title {
+  letter-spacing: 0.12em;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.qrWrap {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+#qrcode {
+  width: 260px;
+  height: 260px;
+}
+
+#qrcode img,
+#qrcode canvas {
+  width: 260px !important;
+  height: 260px !important;
+}
+
+.hint {
+  font-size: 12px;
+  opacity: 0.6;
+}

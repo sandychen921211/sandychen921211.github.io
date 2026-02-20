@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WAITING DATA REPORT</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fjalla+One&family=Jersey+10&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+TC:wght@100..900&family=Parisienne&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Workbench&family=Yarndings+12&family=Zen+Maru+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fjalla+One&family=Jersey+10&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+TC:wght@100..900&family=Parisienne&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Victor+Mono:ital,wght@0,100..700;1,100..700&family=Workbench&family=Yarndings+12&family=Zen+Maru+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/report.css" />
+  </head>
+
+  <body class="fade-in">
+    <div id="viewport">
+      <div class="stage" id="reportApp">
+        <!-- 底圖 -->
+        <img class="bg" src="./assets/img/report_bg.jpg" alt="report bg" />
+
+        <!-- 右上紅框：日期/時間 pills（JS 依電腦時間更新） -->
+        <div class="top-pills">
+          <div class="pill pill-date" id="pillDate">
+            - ( DEC / 10 / 2025 ) -
+          </div>
+          <div class="pill pill-time" id="pillTime">- ( 02:13 PM ) -</div>
+        </div>
+
+        <!-- ===== 藍框：截圖區（人物 + blob） ===== -->
+        <div class="shot-box" id="shotBox">
+          <img id="reportShot" alt="shot" />
+          <!-- 藍框內數字 -->
+          <div class="serial" id="serialText">00000001</div>
+        </div>
+
+        <!-- 左側橘框固定文字區：偵測層級 + Level Description（固定） -->
+        <div class="label-level">
+          <div class="label-title">偵測層級</div>
+          <div class="label-sub">Level Description</div>
+          <div class="label-icon">U</div>
+        </div>
+
+        <!-- Shape Analysis（固定） -->
+        <div class="label-shape">
+          <div class="tri">▲</div>
+          <div class="text">Shape Analysis</div>
+
+          <!-- 中央藍框區：GIF slot（保留你原本的） -->
+          <div class="gif-slot" id="gifSlot">
+            <img src="./assets/img/report_act01.png" alt="gif" />
+            <img src="./assets/img/report_act02.png" alt="gif" />
+            <img src="./assets/img/report_act03.png" alt="gif" />
+          </div>
+        </div>
+
+        <!-- ===== 綠框位置：三個值（01/02/03），不是一行文字 ===== -->
+        <div class="shape-grid" id="shapeGrid">
+          <div class="shape-item">
+            <div class="shape-no">01</div>
+            <div class="shape-thumb" id="shape01"></div>
+          </div>
+
+          <div class="shape-item">
+            <div class="shape-no">02</div>
+            <div class="shape-thumb" id="shape02"></div>
+          </div>
+
+          <div class="shape-item">
+            <div class="shape-no">03</div>
+            <div class="shape-thumb" id="shape03"></div>
+          </div>
+        </div>
+
+        <!-- 橘框：Engagement label（五種之一，JS 綁定） -->
+        <div class="eng-box" id="reportEng">
+          <span class="eng-no" id="engNo">01</span>
+          <div class="ch-word" id="engCh">穩定等待</div>
+          <div class="eng-word" id="engEn">Adaptive Threshold</div>
+        </div>
+
+        <!-- ===== 藍框：兩行文字（跟 Engagement 綁定）===== -->
+        <div class="desc-box" id="reportDesc">
+          <div class="desc-line desc-top" id="descTop">
+            行為反應進入調適狀態
+          </div>
+          <div class="desc-line desc-bottom" id="descBottom">
+            Behavioral responses: Adaptive State
+          </div>
+        </div>
+
+        <!-- 綠框三卡：固定文字＋邊框，數值由 JS 綁定（不動） -->
+        <div class="cards">
+          <!-- Anxiety Index -->
+          <div class="card" id="cardAnx">
+            <div class="card-title-zh">焦躁指數</div>
+            <div class="card-title-en">Anxiety Index</div>
+            <div class="card-value" id="reportPct">0%</div>
+          </div>
+
+          <!-- Waiting Time -->
+          <div class="card" id="cardTime">
+            <div class="card-title-zh">等待時間</div>
+            <div class="card-title-en">Waiting Time (M:S)</div>
+            <div class="card-value" id="reportTime">00:00</div>
+          </div>
+
+          <!-- Behavior Repeat -->
+          <div class="card" id="cardRepeat">
+            <div class="card-title-zh">行為重複次數</div>
+            <div class="card-title-en">Behavior Repeat Times</div>
+            <div class="repeat-row">
+              <img id="reportActionIcon" class="repeat-ico" alt="action" />
+              <div id="reportActionCount" class="repeat-num">00</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 底部英文字（固定） -->
+        <div class="footer">
+          <div class="download">DOWNLOAD YOUR REPORT &nbsp;&gt;&gt;</div>
+          <div class="footer-mark">NNQ</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/report.js"></script>
+    <script>
+      setTimeout(() => {
+        window.location.href = new URL(
+          "./qrcode.html",
+          window.location.href,
+        ).toString();
+      }, 5000);
+    </script>
+  </body>
+</html>

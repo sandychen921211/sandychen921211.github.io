@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WAITING DETECTOR</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div id="viewport">
+      <div class="stage" id="app">
+        <img src="./assets/img/bg.jpg" />
+
+        <div class="accent top"></div>
+        <div class="hairline top"></div>
+        <div class="hairline bottom"></div>
+
+        <img class="png png-tl" src="./assets/img/top_left_icon.png" />
+        <img class="png png-tr" src="./assets/img/top_right_icon.png" />
+        <img class="png png-bl" src="./assets/img/bottom_icon.png" />
+        <img class="png png-br" src="./assets/img/bottom_icon.png" />
+
+        <div class="photobooth">PHOTOBOOTH</div>
+
+        <div class="title">
+          <img src="./assets/img/title.png" />
+        </div>
+
+        <div class="live-wrap">
+          <img src="./assets/img/detect_bg.png" />
+          <div class="live-inner">
+            <video id="video" autoplay playsinline muted></video>
+
+            <!-- ✅ 新增：人物遮罩 -->
+            <canvas id="maskCanvas"></canvas>
+
+            <!-- blob -->
+            <canvas id="blobCanvas"></canvas>
+
+            <div class="rec"><img src="./assets/img/REC.png" /></div>
+            <div class="dash dash-left"></div>
+            <div class="dash dash-mid"></div>
+
+            <div class="anx">
+              <div class="anx-title">Anxiety<br />Index</div>
+
+              <!-- ✅ 修正：anx-bar 需要一個 anx-fill -->
+              <div class="anx-bar">
+                <div class="anx-fill"></div>
+              </div>
+
+              <div class="anx-scale">
+                <div>MAX</div>
+                <div>HIGH</div>
+                <div>MED</div>
+                <div>LOW</div>
+                <div>NONE</div>
+              </div>
+
+              <div class="gear">
+                <img id="gearImg" src="./assets/img/gear.png" alt="gear" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud">
+          <div class="hud-icon">
+            <img src="./assets/img/person.png" />
+            <div class="facerig"><img src="./assets/img/facerig.png" /></div>
+          </div>
+
+          <div class="hud-right">
+            <div class="pills">
+              <div class="pill_01">
+                00000001
+                <img src="./assets/img/pill_button.png" />
+              </div>
+
+              <div class="pill_02">
+                <small>- (</small> Repeat time <small>) -</small>
+              </div>
+              <div class="pill_03">
+                <small>- (</small> Waiting Index <small>) -</small>
+              </div>
+            </div>
+
+            <div class="stats">
+              <div class="stat01">
+                <div class="stat-num" id="timeText">00:00:00</div>
+
+                <div class="engagement-wheel">
+                  <div class="engagement-wheel-inner" id="engagementWheel">
+                    <div>01&nbsp; None Engagement</div>
+                    <div>02&nbsp; Low Engagement</div>
+                    <div>03&nbsp; Med Engagement</div>
+                    <div>04&nbsp; High Engagement</div>
+                    <div>05&nbsp; Max Engagement</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stat02 action-single">
+                <img id="actionIcon" class="action-ico" src="" alt="action" />
+                <div id="actionCount" class="action-num">00</div>
+              </div>
+
+              <div class="stat03">
+                <div class="stat-num big" id="pctText">0%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer"><span>INSTAGRAM</span></div>
+      </div>
+    </div>
+
+    <div id="pageTransition"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5/pose.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation@0.1/selfie_segmentation.js"></script>
+
+    <script src="./js/blob.js"></script>
+    <script src="./js/pose.js"></script>
+    <!-- <script src="./js/mask.js"></script>-->
+    <script src="./js/ui.js"></script>
+  </body>
+</html>

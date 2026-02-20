@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WAITING DETECTOR - LOADING</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fjalla+One&family=Jersey+10&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+TC:wght@100..900&family=Parisienne&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Workbench&family=Yarndings+12&family=Zen+Maru+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/loading.css" />
+  </head>
+
+  <body>
+    <div id="viewport">
+      <div class="stage" id="loadingApp">
+        <!-- 4) 最底下：bg jpg -->
+        <img class="bg" src="./assets/img/loading_bg.png" alt="bg" />
+        <!-- 外框線（可刪） -->
+        <div class="frame"></div>
+
+        <!-- 1) 紅框：四角 PNG -->
+        <img
+          class="corner corner-tl"
+          src="./assets/img/top_left_icon.png"
+          alt=""
+        />
+        <img
+          class="corner corner-tr"
+          src="./assets/img/top_right_icon.png"
+          alt=""
+        />
+        <img
+          class="corner corner-bl"
+          src="./assets/img/bottom_icon.png"
+          alt=""
+        />
+        <img
+          class="corner corner-br"
+          src="./assets/img/bottom_icon.png"
+          alt=""
+        />
+
+        <!-- 2) 綠框符號區：用 PNG 單個跳動 -->
+        <!-- 綠框區域 1 -->
+        <div id="glyphBoxTopLeft" class="glyph-box"></div>
+
+        <!-- 綠框區域 2 -->
+        <div id="glyphBoxBottomRight" class="glyph-box"></div>
+
+        <!-- 5) 橘色框：右上數字區（6 行） -->
+        <div class="mins mins-right" id="minsRight">
+          <div
+            class="mins-row"
+            data-mode="range"
+            data-min="0"
+            data-max="10"
+            data-pad="2"
+          >
+            <span class="digits"></span
+            ><span class="mins-text">&nbsp;mins</span>
+          </div>
+          <div
+            class="mins-row"
+            data-mode="range"
+            data-min="10"
+            data-max="30"
+            data-pad="2"
+          >
+            <span class="digits"></span
+            ><span class="mins-text">&nbsp;mins</span>
+          </div>
+          <div
+            class="mins-row"
+            data-mode="range"
+            data-min="30"
+            data-max="60"
+            data-pad="2"
+          >
+            <span class="digits"></span
+            ><span class="mins-text">&nbsp;mins</span>
+          </div>
+          <div
+            class="mins-row"
+            data-mode="range"
+            data-min="60"
+            data-max="120"
+            data-pad="auto"
+          >
+            <span class="digits"></span
+            ><span class="mins-text">&nbsp;mins</span>
+          </div>
+          <div
+            class="mins-row"
+            data-mode="range"
+            data-min="120"
+            data-max="150"
+            data-pad="3"
+          >
+            <span class="digits"></span
+            ><span class="mins-text">&nbsp;mins</span>
+          </div>
+          <div
+            class="mins-row"
+            data-mode="range"
+            data-min="150"
+            data-max="180"
+            data-pad="3"
+          >
+            <span class="digits"></span
+            ><span class="mins-text">&nbsp;mins</span>
+          </div>
+        </div>
+
+        <!-- 5) 橘色框：左下數字區（4 行 / 交互） -->
+        <div class="mins mins-left" id="minsLeft">
+          <div
+            class="mins-row"
+            data-mode="toggle"
+            data-a="0"
+            data-b="1"
+            data-pad="1"
+          >
+            <span class="digits"></span
+            ><span class="mins-text">&nbsp;mins</span>
+          </div>
+          <div
+            class="mins-row"
+            data-mode="toggle"
+            data-a="1"
+            data-b="2"
+            data-pad="1"
+          >
+            <span class="digits"></span
+            ><span class="mins-text">&nbsp;mins</span>
+          </div>
+          <div
+            class="mins-row"
+            data-mode="toggle"
+            data-a="3"
+            data-b="4"
+            data-pad="1"
+          >
+            <span class="digits"></span
+            ><span class="mins-text">&nbsp;mins</span>
+          </div>
+          <div
+            class="mins-row"
+            data-mode="toggle"
+            data-a="4"
+            data-b="5"
+            data-pad="1"
+          >
+            <span class="digits"></span
+            ><span class="mins-text">&nbsp;mins</span>
+          </div>
+        </div>
+
+        <!-- 3) 中央藍色框：預留 GIF -->
+        <div class="gif-slot">
+          <!-- 你可改成 <img> 或 <video>，這裡先用 img -->
+          <img src="./assets/img/replace.png" alt="gif" />
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/loading.js"></script>
+  </body>
+</html>

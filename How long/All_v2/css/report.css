@@ -1,0 +1,415 @@
+:root {
+  --stageW: 1080px;
+  --stageH: 1920px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  overflow: hidden;
+}
+
+#viewport {
+  left: 34%;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.stage {
+  width: var(--stageW);
+  height: var(--stageH);
+  position: relative;
+  background: #fff;
+  transform-origin: top left;
+  overflow: hidden;
+}
+
+/* bg */
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* fade in */
+.fade-in {
+  opacity: 0;
+  transition: opacity 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.fade-in.is-ready {
+  opacity: 1;
+}
+
+/* ===== top pills ===== */
+.top-pills {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  display: flex;
+  gap: 14px;
+  z-index: 50;
+}
+.pill {
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  user-select: none;
+}
+.pill-date {
+  background: #e4ff1c;
+  color: #111;
+}
+.pill-time {
+  background: #111;
+  color: #fff;
+}
+
+/* ===== blue shot box ===== */
+/* 1) 對準紅框：把 shot-box 尺寸/位置調成「剛好塞進大灰框」 */
+.shot-box {
+  position: absolute;
+  left: 250px;
+  top: 368px;
+  width: 582px;
+  height: 700px;
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+#reportShot {
+  filter: grayscale(100%);
+}
+.shot-box img#reportShot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: #656565;
+  border-width: 20px;
+}
+
+/* serial number */
+.serial {
+  position: absolute;
+  left: 60px;
+  top: 86px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 28px;
+  color: #e4ff1c;
+  letter-spacing: 0.02em;
+  z-index: 12;
+}
+
+/* gif slot（保留你原本行為，不改動畫/顯示邏輯） */
+.gif-slot {
+  position: absolute;
+  left: 2%;
+  top: 60px;
+  width: 570px;
+  height: 140px;
+  z-index: 12;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.gif-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ===== orange fixed labels ===== */
+.label-level {
+  position: absolute;
+  left: 50px;
+  top: 1120px;
+  width: 320px;
+  height: 92px;
+  border-radius: 999px;
+  background: #e4ff1c;
+  align-items: center;
+  padding: 18px 22px;
+  gap: 16px;
+  z-index: 20;
+  user-select: none;
+}
+.label-title {
+  margin-top: 2px;
+  margin-left: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: #111;
+  line-height: 1.1;
+}
+.label-sub {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: #111;
+  opacity: 0.9;
+  margin-left: 12px;
+  margin-top: 6px;
+}
+.label-icon {
+  font-family: "Yarndings 12", system-ui;
+  margin-left: 84%;
+  margin-top: -19%;
+  font-weight: 400;
+  font-size: 46px;
+  color: #111;
+}
+
+.label-shape {
+  position: absolute;
+  left: 410px;
+  top: 1120px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 20;
+  user-select: none;
+}
+.label-shape .tri {
+  font-size: 18px;
+  color: #111;
+}
+.label-shape .text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #111;
+}
+
+/* ===== NEW: shape grid (01/02/03) ===== */
+/* 2) 綠框位置三個值：01/02/03 各自一格 */
+.shape-grid {
+  position: absolute;
+  left: 400px;
+  top: 1208px;
+  width: 640px;
+  height: 255px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 22px;
+  z-index: 25;
+  user-select: none;
+  pointer-events: none;
+}
+
+.shape-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.shape-no {
+  position: absolute;
+  left: 16px;
+  top: -26px;
+  font-family: "Victor Mono", monospace;
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.55);
+  letter-spacing: 0.02em;
+}
+
+.shape-thumb {
+  position: absolute;
+  left: 0;
+  top: 26px;
+  width: 100%;
+  height: calc(100% - 26px);
+  overflow: hidden;
+  border-radius: 0px;
+  /* 這裡不畫框，避免干擾你底圖原本的線 */
+}
+
+/* 若你要用 img 放進去，可在 report.js 插入 <img>，這邊提供預設 */
+.shape-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  opacity: 0.9;
+}
+/* ===== engagement label ===== */
+.eng-box {
+  position: absolute;
+  left: 160px;
+  top: 1236px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111;
+  z-index: 30;
+  user-select: none;
+}
+
+.eng-no {
+  position: relative;
+  left: -90px;
+  margin-right: 6px;
+  font-size: 130px;
+  letter-spacing: -0.02em;
+}
+.ch-word {
+  position: relative;
+  top: -125px;
+  left: 70px;
+  font-size: 28px;
+}
+.eng-word {
+  width: 100px;
+  position: relative;
+  top: -120px;
+  left: 70px;
+  font-weight: 20;
+  letter-spacing: -0.02em;
+}
+
+/* ===== purple description box (2 lines) ===== */
+/* 3) 兩行字：改 column */
+.desc-box {
+  position: absolute;
+  left: 100px;
+  top: 1383px;
+  width: 220px;
+  min-height: 76px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 30;
+  user-select: none;
+  text-align: center;
+}
+
+.desc-line {
+  width: 100%;
+  line-height: 1.2;
+  color: #bdbdbd;
+}
+
+.desc-top {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.desc-bottom {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.9;
+  letter-spacing: 0.02em;
+}
+
+/* ===== green cards ===== */
+.cards {
+  position: absolute;
+  left: 68px;
+  top: 1530px;
+  width: 950px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 26px;
+  z-index: 40;
+}
+
+.card {
+  border: 2px solid rgba(0, 0, 0, 0.85);
+  border-radius: 14px;
+  padding: 26px 28px 18px;
+  background: rgba(255, 255, 255, 0);
+  user-select: none;
+  min-height: 220px;
+}
+
+.card-title-zh {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 25px;
+  color: #111;
+}
+.card-title-en {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  color: #111;
+  opacity: 0.85;
+  margin-top: 0px;
+}
+.card-value {
+  margin-top: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 110px;
+  color: #111;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* repeat card */
+.repeat-row {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.repeat-ico {
+  width: 96px;
+  height: auto;
+  display: block;
+}
+.repeat-num {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 110px;
+  color: #111;
+  line-height: 1;
+}
+
+/* ===== footer ===== */
+.footer {
+  position: absolute;
+  left: 70px;
+  right: 120px;
+  bottom: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 60;
+  user-select: none;
+}
+.download {
+  font-family: "Victor Mono", monospace;
+  font-size: 24px;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.02em;
+}
+.footer-mark {
+  position: relative;
+  left: 7%;
+  font-family: "Yarndings 12", system-ui;
+  font-size: 32px;
+  font-weight: 900;
+  color: #e4ff1c;
+  letter-spacing: 0.06em;
+}
