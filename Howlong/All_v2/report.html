@@ -134,10 +134,17 @@
       const params = new URLSearchParams(location.search);
       const isQR = params.get("src") === "qr";
 
-      // ✅ 只有 kiosk（沒有 src=qr）才跳 qrcode
       if (!isQR) {
         setTimeout(() => {
-          window.location.href = "./qrcode.html";
+          // ✅ 從 sessionStorage 取剛剛 report.js 寫入的 share URL
+          const share = sessionStorage.getItem("qr_report_url");
+
+          // ✅ 帶到 qrcode.html（即使 share 為空也不會壞）
+          const next = share
+            ? `./qrcode.html?share=${encodeURIComponent(share)}`
+            : `./qrcode.html`;
+
+          window.location.href = next;
         }, 5000);
       }
     </script>
