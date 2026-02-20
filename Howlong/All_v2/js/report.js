@@ -1,35 +1,37 @@
 /********************************************************************
- * report.js (UPDATED - STRUCTURE READY)
- * - Scale stage to fit screen
- * - Fade-in
- * - Read sessionStorage from detector page
- * - Bind:
- *   (Blue) shot + serial
- *   (Orange) engagement (3 lines) + fixed labels (static in HTML)
- *   (Purple) description (2 lines) tied to engagement level
- *   (Green) cards values
- *   (Top) date/time from system clock
- *   (Shape) 01/02/03 grid (optional, if HTML exists)
- *   (GIF) show only one gif based on actionType (if gifSlot exists)
+ * report.js (CLEAN FINAL)
+ * - ONE scaling system (fit stage into viewport, centered)
+ * - Fade-in safe (never blank on mobile)
+ * - Data source priority:
+ *    1) URL params (for phone via QR)
+ *    2) sessionStorage (for kiosk flow)
+ * - Build share URL (report.html?src=qr&...) and store to sessionStorage
  ********************************************************************/
 
-function resizeStage() {
-  const app = document.getElementById("reportApp");
-  const designW = 1080;
-  const designH = 1920;
-  const scale = Math.min(
-    window.innerWidth / designW,
-    window.innerHeight / designH,
-  );
-  if (app) app.style.transform = `translate(0px, 0px) scale(${scale})`;
+// ===== helpers =====
+function clamp(n, a, b) {
+  return Math.max(a, Math.min(b, n));
 }
-window.addEventListener("resize", resizeStage);
-resizeStage();
+function pad2(n) {
+  return String(n).padStart(2, "0");
+}
+function safeGet(k, fallback = "") {
+  const v = sessionStorage.getItem(k);
+  return v == null ? fallback : v;
+}
+const urlParams = new URLSearchParams(location.search);
+function getParamOrStorage(paramKey, storageKey, fallback = "") {
+  // URL param has priority (phone)
+  const p = urlParams.get(paramKey);
+  if (p != null && p !== "") return p;
+  // else fallback to kiosk sessionStorage
+  return safeGet(storageKey, fallback);
+}
 
-// fade-in
+// ===== fade-in safe =====
 requestAnimationFrame(() => {
   document.body.classList.add("is-ready");
-  document.body.style.opacity = "1"; // ✅ 防呆：避免手機空白
+  document.body.style.opacity = "1";
 });
 
 // ===== DOM =====
@@ -37,7 +39,7 @@ const shotEl = document.getElementById("reportShot");
 const serialEl = document.getElementById("serialText");
 
 const engEl = document.getElementById("reportEng"); // eng-box
-const descEl = document.getElementById("reportDesc"); // desc-box (2 lines)
+const descEl = document.getElementById("reportDesc"); // desc-box
 
 const timeEl = document.getElementById("reportTime");
 const pctEl = document.getElementById("reportPct");
@@ -50,52 +52,45 @@ const pillTimeEl = document.getElementById("pillTime");
 
 const gifSlotEl = document.getElementById("gifSlot");
 
-// 可能存在：三格 shape grid（你若已在 HTML 加上這些 id，就會自動綁定）
 const shape01El = document.getElementById("shape01");
 const shape02El = document.getElementById("shape02");
 const shape03El = document.getElementById("shape03");
 
+// ✅ 統一路徑（不要用 ../）
 const ACTION_ICON = {
   neck: "./assets/img/neck_icon.png",
   arms: "./assets/img/hand_icon.png",
   legs: "./assets/img/foot_icon.png",
 };
 
-// ===== storage helpers =====
-function safeGet(k, fallback = "") {
-  const v = sessionStorage.getItem(k);
-  return v == null ? fallback : v;
-}
-function clamp(n, a, b) {
-  return Math.max(a, Math.min(b, n));
-}
-function pad2(n) {
-  return String(n).padStart(2, "0");
-}
+// ===== read values (URL first, then storage) =====
+const level = clamp(
+  Number(getParamOrStorage("level", "r_level", "0")) || 0,
+  0,
+  4,
+);
 
-// ===== read saved values from page1 =====
-const level = clamp(Number(safeGet("r_level", "0")) || 0, 0, 4);
+const engagementLabel = getParamOrStorage(
+  "eng",
+  "r_engagementLabel",
+  "01 None Engagement",
+);
 
-// 例如 "01 None Engagement"
-const engagementLabel = safeGet("r_engagementLabel", "01 None Engagement");
+const mmss = getParamOrStorage("mmss", "r_mmss", "00:00");
+const actionType = getParamOrStorage("action", "r_actionType", "neck");
+const actionCount =
+  Number(getParamOrStorage("count", "r_actionCount", "0")) || 0;
+const waitingPct = Number(getParamOrStorage("pct", "r_waitingPct", "0")) || 0;
 
-const mmss = safeGet("r_mmss", "00:00");
-const actionType = safeGet("r_actionType", "neck");
-const actionCount = Number(safeGet("r_actionCount", "0")) || 0;
-const waitingPct = Number(safeGet("r_waitingPct", "0")) || 0;
+const shot = getParamOrStorage("shot", "r_shot", ""); // 若你未打算分享截圖，可留空
+const serial = getParamOrStorage("serial", "r_serial", "00000001");
 
-const shot = safeGet("r_shot", "");
+const shape01 = getParamOrStorage("s1", "r_shape01", "");
+const shape02 = getParamOrStorage("s2", "r_shape02", "");
+const shape03 = getParamOrStorage("s3", "r_shape03", "");
 
-// （可選）你若在 detector 頁有存這些，report 就能顯示三格分析圖
-// 例如存 base64：sessionStorage.setItem("r_shape01", dataUrl);
-const shape01 = safeGet("r_shape01", "");
-const shape02 = safeGet("r_shape02", "");
-const shape03 = safeGet("r_shape03", "");
-
-// ===== Engagement (3 lines) =====
-// 把 "01 None Engagement" 拆成 number + label
+// ===== Engagement label parse =====
 function parseEngLabel(str) {
-  // 預期： "01 None Engagement"
   const m = String(str)
     .trim()
     .match(/^(\d{2})\s+(.*)$/);
@@ -104,8 +99,7 @@ function parseEngLabel(str) {
 }
 const engParsed = parseEngLabel(engagementLabel);
 
-// 你要的五階（中英文字，依 level 綁定）
-// 這裡你可換成你設計稿的正式文案
+// ===== copy decks =====
 const ENG_TEXT_BY_LEVEL = [
   { zh: "穩定等待", en: "None Engagement" },
   { zh: "低度參與", en: "Low Engagement" },
@@ -114,8 +108,6 @@ const ENG_TEXT_BY_LEVEL = [
   { zh: "極限參與", en: "Max Engagement" },
 ];
 
-// ===== Purple description (2 lines) tied to engagement =====
-// 上下兩行（你可改成你自己的文案）
 const DESC_BY_LEVEL_2LINES = [
   { top: "行為反應進入低警覺狀態", bottom: "Behavioral response: low arousal" },
   {
@@ -136,15 +128,12 @@ const DESC_BY_LEVEL_2LINES = [
   },
 ];
 
-// ===== apply bindings =====
+// ===== bind UI =====
 
-// ---- Engagement box: 3 lines ----
+// --- Engagement box ---
 if (engEl) {
   const t = ENG_TEXT_BY_LEVEL[level] || ENG_TEXT_BY_LEVEL[0];
 
-  // 相容兩種寫法：
-  // A) 你 HTML 已經是 <div class="eng-no">...</div><div class="ch-word">...</div><div class="eng-word">...</div>
-  // B) 你還沒改 HTML -> 我直接塞 innerHTML 建立結構
   let noEl = engEl.querySelector(".eng-no");
   let chEl = engEl.querySelector(".ch-word");
   let enEl = engEl.querySelector(".eng-word");
@@ -160,20 +149,18 @@ if (engEl) {
     enEl = engEl.querySelector(".eng-word");
   }
 
-  // number：以「綁定結果」為主；若你想強制跟 level 走，可改成 pad2(level+1)
   if (noEl) noEl.textContent = engParsed.no || pad2(level + 1);
   if (chEl) chEl.textContent = t.zh;
   if (enEl) enEl.textContent = t.en;
 }
 
-// ---- Purple desc: 2 lines ----
+// --- Purple desc ---
 if (descEl) {
   const d = DESC_BY_LEVEL_2LINES[level] || DESC_BY_LEVEL_2LINES[0];
 
   let topLine = descEl.querySelector(".desc-top");
   let bottomLine = descEl.querySelector(".desc-bottom");
 
-  // 若 HTML 還是一行文字，也能自動補成兩行
   if (!topLine || !bottomLine) {
     descEl.innerHTML = `
       <div class="desc-line desc-top"></div>
@@ -187,14 +174,14 @@ if (descEl) {
   if (bottomLine) bottomLine.textContent = d.bottom;
 }
 
-// ---- Green cards ----
+// --- Cards ---
 if (timeEl) timeEl.textContent = mmss;
 if (pctEl) pctEl.textContent = `${clamp(waitingPct, 0, 99)}%`;
 
 if (actIconEl) actIconEl.src = ACTION_ICON[actionType] || ACTION_ICON.neck;
 if (actCountEl) actCountEl.textContent = String(actionCount).padStart(2, "0");
 
-// ---- Blue shot ----
+// --- Shot ---
 if (shotEl) {
   if (shot) {
     shotEl.src = shot;
@@ -204,21 +191,17 @@ if (shotEl) {
   }
 }
 
-// ---- Blue serial ----
-if (serialEl) {
-  serialEl.textContent = safeGet("r_serial", "00000001");
-}
+// --- Serial ---
+if (serialEl) serialEl.textContent = serial;
 
-// ---- Shape grid (optional) ----
-// 你若 HTML 有 shape01/02/03 容器，這裡會塞圖；沒有就略過
+// --- Shape grid ---
 function setShape(el, dataUrl) {
   if (!el) return;
   if (!dataUrl) {
-    el.style.opacity = "0"; // 沒資料就不顯示
+    el.style.opacity = "0";
     return;
   }
   el.style.opacity = "1";
-  // 如果你已經在 HTML 放 <img>，就用它；否則動態建立
   let img = el.querySelector("img");
   if (!img) {
     img = document.createElement("img");
@@ -231,11 +214,10 @@ setShape(shape01El, shape01);
 setShape(shape02El, shape02);
 setShape(shape03El, shape03);
 
-// ---- GIF slot: show only one based on actionType ----
+// --- GIF slot ---
 if (gifSlotEl) {
   const imgs = Array.from(gifSlotEl.querySelectorAll("img"));
   if (imgs.length) {
-    // 對應你放的三張：act01/act02/act03
     const idx =
       actionType === "neck"
         ? 0
@@ -251,7 +233,7 @@ if (gifSlotEl) {
   }
 }
 
-// ===== top pills: date/time from system =====
+// ===== Top pills: date/time from system =====
 function monthAbbr(m) {
   return (
     [
@@ -292,6 +274,7 @@ function updatePills() {
 updatePills();
 setInterval(updatePills, 30 * 1000);
 
+// ===== ONE scaling system (center-fit) =====
 (function fitReportStage() {
   const stage = document.getElementById("reportApp");
   const viewport = document.getElementById("viewport");
@@ -301,7 +284,6 @@ setInterval(updatePills, 30 * 1000);
   const DESIGN_H = 1920;
 
   function applyScale() {
-    // iOS Safari 工具列會動，用 visualViewport 更穩
     const vw = window.visualViewport?.width ?? viewport.clientWidth;
     const vh = window.visualViewport?.height ?? viewport.clientHeight;
 
@@ -318,3 +300,31 @@ setInterval(updatePills, 30 * 1000);
   window.addEventListener("orientationchange", applyScale);
   window.visualViewport?.addEventListener("resize", applyScale);
 })();
+
+// ===== Build share URL for QR (only meaningful on kiosk side) =====
+function buildShareURL() {
+  const params = new URLSearchParams();
+  params.set("src", "qr");
+
+  params.set("level", String(level));
+  params.set("mmss", String(mmss));
+  params.set("pct", String(waitingPct));
+  params.set("action", String(actionType));
+  params.set("count", String(actionCount));
+  params.set("serial", String(serial));
+
+  // 可選：若你不想把圖塞進網址（會很長），就不要傳
+  // params.set("shot", shot);
+  // params.set("s1", shape01);
+  // params.set("s2", shape02);
+  // params.set("s3", shape03);
+
+  return `report.html?${params.toString()}`;
+}
+
+// 存起來給 qrcode.html 的 qrcode.js 用
+try {
+  sessionStorage.setItem("qr_report_url", buildShareURL());
+} catch (e) {
+  console.warn("Cannot write qr_report_url to sessionStorage", e);
+}
