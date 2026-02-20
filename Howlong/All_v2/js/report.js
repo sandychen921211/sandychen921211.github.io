@@ -29,6 +29,7 @@ resizeStage();
 // fade-in
 requestAnimationFrame(() => {
   document.body.classList.add("is-ready");
+  document.body.style.opacity = "1"; // ✅ 防呆：避免手機空白
 });
 
 // ===== DOM =====
@@ -56,8 +57,8 @@ const shape03El = document.getElementById("shape03");
 
 const ACTION_ICON = {
   neck: "./assets/img/neck_icon.png",
-  arms: "../assets/img/hand_icon.png",
-  legs: "../assets/img/foot_icon.png",
+  arms: "./assets/img/hand_icon.png",
+  legs: "./assets/img/foot_icon.png",
 };
 
 // ===== storage helpers =====

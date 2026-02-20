@@ -128,12 +128,15 @@
         </div>
       </div>
     </div>
+    <script src="./js/report.js"></script>
+
+    <script src="./js/report.js"></script>
 
     <script>
       const params = new URLSearchParams(location.search);
       const isQR = params.get("src") === "qr";
 
-      // 只有 kiosk（沒有 src=qr）才跳 qrcode
+      // ✅ 只有 kiosk（沒有 src=qr）才跳 qrcode
       if (!isQR) {
         setTimeout(() => {
           window.location.href = "./qrcode.html";
