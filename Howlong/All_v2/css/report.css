@@ -415,6 +415,8 @@ body {
   color: #e4ff1c;
   letter-spacing: 0.06em;
 }
+
+/* ===== Mobile/Kiosk fit base ===== */
 html,
 body {
   width: 100%;
@@ -424,22 +426,26 @@ body {
 
 body {
   overflow: hidden;
+  background: #000;
   -webkit-text-size-adjust: 100%;
-  touch-action: manipulation;
 }
 
-/* 用 svh 解決 iOS  Safari 上下工具列高度變動 */
+/* viewport 必須是滿版且相對定位，讓 stage absolute 有基準 */
 #viewport {
-  width: 100vw;
-  height: 100svh;
-  overflow: hidden;
   position: relative;
+  width: 100vw;
+  height: 100svh; /* iOS Safari 穩定高度 */
+  overflow: hidden;
 }
 
-/* 讓舞台可以用 transform 縮放置中 */
+/* stage 必須脫離排版流，固定從 (0,0) 開始 */
 #reportApp {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform-origin: 0 0;
+  left: 0;
+  top: 0;
+
+  width: 1080px;
+  height: 1920px;
+
+  transform-origin: 0 0; /* ✅ 關鍵：top-left */
 }

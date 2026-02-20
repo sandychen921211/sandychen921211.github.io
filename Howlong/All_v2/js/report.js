@@ -297,28 +297,24 @@ setInterval(updatePills, 30 * 1000);
   const viewport = document.getElementById("viewport");
   if (!stage || !viewport) return;
 
-  // ✅ 這裡填你 report 設計稿的基準尺寸（很重要）
-  // 例如你原本是用 1920x1080 或 1080x1920，就填那個
   const DESIGN_W = 1080;
   const DESIGN_H = 1920;
 
   function applyScale() {
-    const vw = viewport.clientWidth;
-    const vh = viewport.clientHeight;
+    // iOS Safari 工具列會動，用 visualViewport 更穩
+    const vw = window.visualViewport?.width ?? viewport.clientWidth;
+    const vh = window.visualViewport?.height ?? viewport.clientHeight;
 
     const scale = Math.min(vw / DESIGN_W, vh / DESIGN_H);
 
-    // 置中：先把 stage 原點拉到螢幕中央，再用 translate 把縮放後尺寸置中
-    const scaledW = DESIGN_W * scale;
-    const scaledH = DESIGN_H * scale;
-
-    const left = (vw - scaledW) / 2;
-    const top = (vh - scaledH) / 2;
+    const left = (vw - DESIGN_W * scale) / 2;
+    const top = (vh - DESIGN_H * scale) / 2;
 
     stage.style.transform = `translate(${left}px, ${top}px) scale(${scale})`;
   }
 
+  applyScale();
   window.addEventListener("resize", applyScale);
   window.addEventListener("orientationchange", applyScale);
-  applyScale();
+  window.visualViewport?.addEventListener("resize", applyScale);
 })();
