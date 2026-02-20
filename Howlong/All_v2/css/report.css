@@ -440,9 +440,6 @@ body {
 /* stage 必須脫離排版流，固定從 (0,0) 開始 */
 #reportApp {
   position: absolute;
-  left: 0;
-  top: 0;
-
   width: 1080px;
   height: 1920px;
 
