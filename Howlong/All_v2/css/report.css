@@ -430,6 +430,13 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
+/* viewport 必須是滿版且相對定位，讓 stage absolute 有基準 */
+#viewport {
+  position: relative;
+  width: 100vw;
+  height: 100svh; /* iOS Safari 穩定高度 */
+}
+
 /* stage 必須脫離排版流，固定從 (0,0) 開始 */
 #reportApp {
   position: absolute;
@@ -439,5 +446,5 @@ body {
   width: 1080px;
   height: 1920px;
 
-  transform-origin: -25% -24%; /* ✅ 關鍵：top-left */
+  transform-origin: -25% -14%; /* ✅ 關鍵：top-left */
 }
