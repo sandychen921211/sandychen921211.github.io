@@ -447,5 +447,5 @@ body {
   width: 1080px;
   height: 1920px;
 
-  transform-origin: 0 0; /* ✅ 關鍵：top-left */
+  transform-origin: -45% -34%; /* ✅ 關鍵：top-left */
 }
