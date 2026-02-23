@@ -330,12 +330,15 @@ try {
 }
 
 function resizeStage() {
-  const app = document.getElementById("reportApp"); // 你的舞台容器 id
+  const viewport = document.getElementById("viewport");
+  const app = document.getElementById("reportApp");
+  if (!viewport || !app) return;
+
   const designW = 1080;
   const designH = 1920;
 
-  const screenW = window.innerWidth;
-  const screenH = window.innerHeight;
+  const screenW = viewport.clientWidth;
+  const screenH = viewport.clientHeight;
 
   const scale = Math.min(screenW / designW, screenH / designH);
 
@@ -346,4 +349,5 @@ function resizeStage() {
 }
 
 window.addEventListener("resize", resizeStage);
-resizeStage();
+window.addEventListener("orientationchange", () => setTimeout(resizeStage, 50));
+document.addEventListener("DOMContentLoaded", resizeStage);

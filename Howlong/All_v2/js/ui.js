@@ -269,7 +269,7 @@ async function startCamera() {
   } catch (err) {
     console.error("[Camera Error]", err);
     alert(
-      "無法啟用相機：請用 https 或 Live Server（localhost），並允許相機權限。"
+      "無法啟用相機：請用 https 或 Live Server（localhost），並允許相機權限。",
     );
   }
 }
