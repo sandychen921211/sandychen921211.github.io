@@ -38,11 +38,25 @@ body {
 .bg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   user-select: none;
   pointer-events: none;
+}
+
+.bg_mov {
+  width: 100%;
+}
+.bg_frame {
+  position: relative;
+  top: -100.2%;
+  left: -0.4%;
+  height: 100.1%;
+}
+.report_frame {
+  position: relative;
+  width: 62%;
+  left: 18%;
+  top: 7%;
+  z-index: 99;
 }
 
 /* fade in */
@@ -73,7 +87,7 @@ body {
   user-select: none;
 }
 .pill-date {
-  background: #e4ff1c;
+  background: #a8f0f7;
   color: #111;
 }
 .pill-time {
@@ -81,12 +95,18 @@ body {
   color: #fff;
 }
 
+.title {
+  position: relative;
+  top: 6%;
+  left: 6%;
+}
+
 /* ===== blue shot box ===== */
 /* 1) 對準紅框：把 shot-box 尺寸/位置調成「剛好塞進大灰框」 */
 .shot-box {
   position: absolute;
-  left: 250px;
-  top: 368px;
+  left: 242px;
+  top: 376px;
   width: 582px;
   height: 700px;
   border-radius: 16px;
@@ -108,8 +128,8 @@ body {
 /* serial number */
 .serial {
   position: absolute;
-  left: 60px;
-  top: 86px;
+  left: 46px;
+  top: 30px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
   font-size: 28px;
@@ -139,12 +159,12 @@ body {
 /* ===== orange fixed labels ===== */
 .label-level {
   position: absolute;
-  left: 50px;
-  top: 1120px;
+  left: 38px;
+  top: 1520px;
   width: 320px;
   height: 92px;
   border-radius: 999px;
-  background: #e4ff1c;
+
   align-items: center;
   padding: 18px 22px;
   gap: 16px;
@@ -157,14 +177,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   font-size: 24px;
-  color: #111;
+  color: #ffffff;
   line-height: 1.1;
 }
 .label-sub {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 300;
   font-size: 20px;
-  color: #111;
+  color: #ffffff;
   opacity: 0.9;
   margin-left: 12px;
   margin-top: 6px;
@@ -240,6 +260,9 @@ body {
   height: calc(100% - 26px);
   overflow: hidden;
   border-radius: 0px;
+  font-family: "PP Editorial New", serif;
+  font-weight: 800; /* UltraBold */
+  font-style: italic; /* Italic */
   /* 這裡不畫框，避免干擾你底圖原本的線 */
 }
 
@@ -254,71 +277,54 @@ body {
 /* ===== engagement label ===== */
 .eng-box {
   position: absolute;
-  left: 160px;
-  top: 1236px;
-  font-family: Arial, Helvetica, sans-serif;
+  left: 180px;
+  top: 1540px;
+
   font-size: 22px;
   font-weight: 800;
-  color: #111;
+  color: #e4ff1c;
   z-index: 30;
   user-select: none;
+}
+.box-title {
+  position: relative;
+  top: -56%;
+  left: -62%;
+  font-weight: 400;
+  color: #ffffff;
+}
+.box-title-sub {
+  position: relative;
+  top: -40%;
+  left: -62%;
+  color: #ffffff;
+  font-weight: 3s00;
 }
 
 .eng-no {
   position: relative;
-  left: -90px;
+  top: 30px;
+  left: -115px;
   margin-right: 6px;
   font-size: 130px;
   letter-spacing: -0.02em;
+  font-family: "PP Editorial New", serif;
+  font-weight: 800; /* UltraBold */
+  font-style: italic; /* Italic */
 }
 .ch-word {
   position: relative;
-  top: -125px;
-  left: 70px;
+  top: -110px;
+  left: 50px;
   font-size: 28px;
 }
 .eng-word {
   width: 100px;
   position: relative;
-  top: -120px;
-  left: 70px;
-  font-weight: 20;
-  letter-spacing: -0.02em;
-}
-
-/* ===== purple description box (2 lines) ===== */
-/* 3) 兩行字：改 column */
-.desc-box {
-  position: absolute;
-  left: 100px;
-  top: 1383px;
-  width: 220px;
-  min-height: 76px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  font-family: Arial, Helvetica, sans-serif;
-  z-index: 30;
-  user-select: none;
-  text-align: center;
-}
-
-.desc-line {
-  width: 100%;
-  line-height: 1.2;
-  color: #bdbdbd;
-}
-
-.desc-top {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.desc-bottom {
-  font-size: 13px;
-  font-weight: 500;
-  opacity: 0.9;
+  top: -105px;
+  left: 50px;
+  font-size: 20px;
+  font-weight: 400;
   letter-spacing: 0.02em;
 }
 
@@ -326,50 +332,43 @@ body {
 .cards {
   position: absolute;
   left: 68px;
-  top: 1530px;
+  top: 1250px;
   width: 950px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 26px;
+  gap: 70px;
   z-index: 40;
-}
-
-.card {
-  border: 2px solid rgba(0, 0, 0, 0.85);
-  border-radius: 14px;
-  padding: 26px 28px 18px;
-  background: rgba(255, 255, 255, 0);
-  user-select: none;
-  min-height: 220px;
 }
 
 .card-title-zh {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   font-size: 25px;
-  color: #111;
+  color: #ffffff;
 }
 .card-title-en {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
   font-size: 20px;
-  color: #111;
+  color: #ffffff;
   opacity: 0.85;
   margin-top: 0px;
 }
 .card-value {
-  margin-top: 24px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 900;
-  font-size: 110px;
-  color: #111;
+  margin-top: 34px;
+  margin-left: 2px;
+  font-size: 104px;
+  color: #ffffff;
   letter-spacing: -0.02em;
   line-height: 1;
+  font-family: "PP Editorial New", serif;
+  font-weight: 800; /* UltraBold */
+  font-style: italic; /* Italic */
 }
 
 /* repeat card */
 .repeat-row {
-  margin-top: 18px;
+  margin-top: 32px;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -380,40 +379,17 @@ body {
   display: block;
 }
 .repeat-num {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 900;
-  font-size: 110px;
-  color: #111;
+  font-family: "PP Editorial New", serif;
+  font-weight: 800; /* UltraBold */
+  font-style: italic; /* Italic */
+  font-size: 104px;
+  color: #ffffff;
   line-height: 1;
 }
-
-/* ===== footer ===== */
-.footer {
-  position: absolute;
-  left: 70px;
-  right: 120px;
-  bottom: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 60;
-  user-select: none;
-}
-.download {
-  font-family: "Victor Mono", monospace;
-  font-size: 24px;
-  font-weight: 800;
-  color: #111;
-  letter-spacing: -0.02em;
-}
-.footer-mark {
-  position: relative;
-  left: 7%;
-  font-family: "Yarndings 12", system-ui;
-  font-size: 32px;
-  font-weight: 900;
-  color: #e4ff1c;
-  letter-spacing: 0.06em;
+.repeat-num-ch {
+  font-size: 52px;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* ===== Mobile/Kiosk fit base ===== */
@@ -443,5 +419,5 @@ body {
   width: 1080px;
   height: 1920px;
 
-  transform-origin: -25% -14%; /* ✅ 關鍵：top-left */
+  transform-origin: -100% 0%; /* ✅ 關鍵：top-left */
 }

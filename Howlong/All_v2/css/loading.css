@@ -52,238 +52,93 @@ body {
   pointer-events: none;
 }
 
-/* 外框線 */
-.frame {
+/* 外框 */
+.bg_frame {
   position: absolute;
-  left: 70px;
-  top: 70px;
+  left: 0px;
+  top: -2px;
   right: 70px;
   bottom: 90px;
   border: 2px solid rgba(0, 0, 0, 0.75);
   z-index: 2;
 }
 
-/* 四角 PNG（紅框） */
-.corner {
+/* 四角 PNG */
+.corner-icon {
   position: absolute;
-  width: 56px; /* 依你素材改 */
+  left: 70px;
+  top: 70px;
   height: auto;
   z-index: 10;
   user-select: none;
   pointer-events: none;
 }
-.corner-tl {
-  width: 20px;
-  left: 100px;
-  top: 100px;
-}
-.corner-tr {
-  width: 40px;
-  right: 100px;
-  top: 100px;
-}
-.corner-bl {
-  width: 40px;
-  left: 90px;
-  bottom: 35px;
-}
-.corner-br {
-  width: 40px;
-  right: 90px;
-  bottom: 35px;
+
+.loading-logo {
+  position: relative;
+  left: 38%;
+  top: 10%;
 }
 
-/* 綠框符號區（只會出現單個符號、隨機位置） */
-.symbol-zone {
-  position: absolute;
-  z-index: 6;
-  pointer-events: none;
-  overflow: hidden;
+.decoration-left {
+  z-index: 99;
+  position: relative;
+  left: 0.2%;
+  top: -3000px;
+  border-image-repeat: repeat;
+  animation: marquee 5s linear infinite;
 }
 
-/* 你可依你標示綠框位置微調 */
-.symbol-zone-top {
-  left: 120px;
-  top: 150px;
-  width: 520px;
-  height: 280px;
+@keyframes marquee {
+  from {
+    transform: translateY(-11em);
+  }
+  to {
+    transform: translateY(8em);
+  }
 }
-.symbol-zone-bottom {
-  right: 120px;
-  bottom: 210px;
-  width: 420px;
-  height: 220px;
-}
-
-/* 單個符號元素 */
-.symbol {
-  position: absolute;
-  width: 34px; /* 依你符號 png 尺寸調整 */
-  height: auto;
-  opacity: 0;
-  transform: translateY(8px) scale(0.98);
-  filter: blur(0px);
-  will-change: transform, opacity;
+.decoration-right {
+  z-index: 99;
+  position: relative;
+  left: 84%;
+  top: -3000px;
+  border-image-repeat: repeat;
+  animation: marqueeup 5s linear infinite;
 }
 
-/* 「閃、跳動」：單個符號 pop 出現再淡出 */
-@keyframes symbolPop {
+@keyframes marqueeup {
+  from {
+    transform: translateY(8em);
+  }
+  to {
+    transform: translateY(-11em);
+  }
+}
+
+.loading-text {
+  position: relative;
+  top: -229%;
+  left: -25%;
+  z-index: 999;
+  transform-origin: center center; /* 原地縮放 */
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
   0% {
-    opacity: 0;
-    transform: translateY(10px) scale(0.95);
+    transform: scale(1);
   }
-  35% {
-    opacity: var(--symbol-opacity);
-    transform: translateY(-2px) scale(1);
-  }
-  70% {
-    opacity: calc(var(--symbol-opacity) * 0.85);
-    transform: translateY(0px) scale(0.995);
-  }
+  50% {
+    transform: scale(1.08);
+  } /* 放大比例可調 */
   100% {
-    opacity: 0;
-    transform: translateY(6px) scale(0.98);
+    transform: scale(1);
   }
 }
 
-/* 藍框：GIF 位置（你可改成精準座標） */
-.gif-slot {
-  position: absolute;
-  left: 50%;
-  top: 47%;
-  transform: translate(-50%, -50%);
-  width: 160%;
-  height: 480px;
-  z-index: 7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-.gif-slot img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-/* mins 文字區 */
-.mins {
-  position: absolute;
-  z-index: 8;
-  font-family: "Times New Roman", serif; /* 你若用別的字體再換 */
-  font-style: italic;
-  color: #222;
-  user-select: none;
-}
-
-.mins-right {
-  right: 210px;
-  top: 360px;
-}
-
-.mins-left {
-  left: 210px;
-  bottom: 320px;
-}
-
-.mins-row {
-  display: flex;
-  align-items: baseline;
-  height: var(--mins-line);
-  line-height: var(--mins-line);
-  gap: 6px;
-}
-
-.digits {
+.hourglass {
+  width: 60%;
+  z-index: 99;
   position: relative;
-  top: 32%;
-  font-size: 28px;
-  letter-spacing: 0.04em;
-  display: inline-block;
-  min-width: 70px; /* 預留寬度避免跳版 */
-}
-
-.mins-text {
-  font-size: var(--mins-font);
-  opacity: 1;
-}
-
-/* 數字滾輪（slot）效果：用字距 + 遮罩做出「上下滾動」感 */
-.slot {
-  position: relative;
-  display: inline-block;
-  height: var(--mins-line);
-  overflow: hidden;
-}
-
-/* 每個 digit column */
-.slot-col {
-  position: relative;
-  width: 22px;
-  height: var(--mins-line);
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: bottom;
-}
-
-/* column 內容（0-9 疊在一起） */
-.slot-strip {
-  position: absolute;
-  left: 0;
-  top: 0;
-  will-change: transform;
-}
-
-.slot-strip div {
-  height: var(--mins-line);
-  line-height: var(--mins-line);
-  text-align: center;
-  width: 22px;
-}
-
-/* ====== Glyph boxes (綠框：固定排版、原地輪轉) ====== */
-
-/* 綠框容器：維持你原本定位，不動 */
-.glyph-box {
-  position: absolute;
-  overflow: hidden;
-  pointer-events: none;
-
-  /* 你要的字串感 */
-  font-family: "Yarndings 12", system-ui;
-  color: rgba(190, 190, 190, 0.85);
-
-  /* 可以微調：字大小、行距、字距 */
-  font-size: 20px;
-  line-height: 1.55;
-  letter-spacing: 70px;
-
-  white-space: pre; /* 由我們用 <br> 控制換行 */
-}
-
-/* 每一格符號：固定佔位，永不空白 */
-.glyph-cell {
-  letter-spacing: 2em;
-  display: inline-block;
-  width: 1ch; /* 每格固定寬度 */
-  text-align: center;
-  vertical-align: top;
-  opacity: 1;
-}
-
-/* （重要）你現在 CSS 有 .symbol / .symbol.pop 動畫，會干擾視覺
-   我們不刪它，但新的 glyph 不用 .symbol，所以不會用到 */
-
-#glyphBoxTopLeft {
-  left: 70px;
-  top: 150px;
-  width: 520px;
-  height: 160px;
-}
-
-#glyphBoxBottomRight {
-  right: -10px;
-  bottom: 200px;
-  width: 360px;
-  height: 150px;
+  top: -237%;
+  left: 20%;
 }

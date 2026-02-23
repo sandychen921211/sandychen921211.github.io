@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
@@ -10,16 +10,14 @@
   <body>
     <div id="viewport">
       <div class="stage" id="app">
-        <img src="./assets/img/bg.jpg" />
+        <img class="bg_mov" src="./assets/img/bg_mov.gif" />
+        <img class="bg" src="./assets/img/bg.png" />
 
         <div class="accent top"></div>
-        <div class="hairline top"></div>
         <div class="hairline bottom"></div>
 
         <img class="png png-tl" src="./assets/img/top_left_icon.png" />
         <img class="png png-tr" src="./assets/img/top_right_icon.png" />
-        <img class="png png-bl" src="./assets/img/bottom_icon.png" />
-        <img class="png png-br" src="./assets/img/bottom_icon.png" />
 
         <div class="photobooth">PHOTOBOOTH</div>
 
@@ -28,7 +26,7 @@
         </div>
 
         <div class="live-wrap">
-          <img src="./assets/img/detect_bg.png" />
+          <img src="./assets/img/frame.png" />
           <div class="live-inner">
             <video id="video" autoplay playsinline muted></video>
 
@@ -43,7 +41,8 @@
             <div class="dash dash-mid"></div>
 
             <div class="anx">
-              <div class="anx-title">Anxiety<br />Index</div>
+              <div class="anx-title">焦慮指數</div>
+              <div class="anx-title-2">anxiety Index</div>
 
               <!-- ✅ 修正：anx-bar 需要一個 anx-fill -->
               <div class="anx-bar">
@@ -51,11 +50,11 @@
               </div>
 
               <div class="anx-scale">
-                <div>MAX</div>
-                <div>HIGH</div>
-                <div>MED</div>
-                <div>LOW</div>
-                <div>NONE</div>
+                <div>極MAX</div>
+                <div>高HIGH</div>
+                <div>中MED</div>
+                <div>低LOW</div>
+                <div>無NONE</div>
               </div>
 
               <div class="gear">
@@ -74,15 +73,23 @@
           <div class="hud-right">
             <div class="pills">
               <div class="pill_01">
-                00000001
+                <img class="member-icon" src="./assets/img/member.png" />
+                <div class="member-num">00000001</div>
                 <img src="./assets/img/pill_button.png" />
               </div>
 
               <div class="pill_02">
-                <small>- (</small> Repeat time <small>) -</small>
+                <div class="pill-title">
+                  <span>- (</span> 行為重複次數 <span>) -</span>
+                </div>
+                <div class="pill-sub">Repetition Count</div>
               </div>
-              <div class="pill_03">
-                <small>- (</small> Waiting Index <small>) -</small>
+
+              <div class="pill_02">
+                <div class="pill-title">
+                  <span>- (</span> 等待焦躁指數 <span>) -</span>
+                </div>
+                <div class="pill-sub">Waiting Anxiety Index</div>
               </div>
             </div>
 
@@ -92,7 +99,7 @@
 
                 <div class="engagement-wheel">
                   <div class="engagement-wheel-inner" id="engagementWheel">
-                    <div>01&nbsp; None Engagement</div>
+                    <div>01&nbsp; 無互動狀態</div>
                     <div>02&nbsp; Low Engagement</div>
                     <div>03&nbsp; Med Engagement</div>
                     <div>04&nbsp; High Engagement</div>
@@ -102,18 +109,13 @@
               </div>
 
               <div class="stat02 action-single">
-                <img id="actionIcon" class="action-ico" src="" alt="action" />
                 <div id="actionCount" class="action-num">00</div>
+                <span class="count-unit">次</span>
               </div>
-
-              <div class="stat03">
-                <div class="stat-num big" id="pctText">0%</div>
-              </div>
+              <div class="stat-num big" id="pctText">0%></div>
             </div>
           </div>
         </div>
-
-        <div class="footer"><span>INSTAGRAM</span></div>
       </div>
     </div>
 
