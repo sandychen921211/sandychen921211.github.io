@@ -408,6 +408,7 @@ body {
 
 #viewport {
   position: relative;
+  left: 0%;
   width: 100svw;
   height: 100svh;
   overflow: hidden; /* ✅ 很重要 */
