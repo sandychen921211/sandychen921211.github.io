@@ -328,3 +328,22 @@ try {
 } catch (e) {
   console.warn("Cannot write qr_report_url to sessionStorage", e);
 }
+
+function resizeStage() {
+  const app = document.getElementById("reportApp"); // 你的舞台容器 id
+  const designW = 1080;
+  const designH = 1920;
+
+  const screenW = window.innerWidth;
+  const screenH = window.innerHeight;
+
+  const scale = Math.min(screenW / designW, screenH / designH);
+
+  const offsetX = (screenW - designW * scale) / 2;
+  const offsetY = (screenH - designH * scale) / 2;
+
+  app.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+}
+
+window.addEventListener("resize", resizeStage);
+resizeStage();
