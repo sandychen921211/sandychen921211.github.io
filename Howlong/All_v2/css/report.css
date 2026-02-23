@@ -417,6 +417,4 @@ body {
   position: absolute;
   width: 1080px;
   height: 1920px;
-
-  transform-origin: -100% 0%; /* ✅ 關鍵：top-left */
 }
