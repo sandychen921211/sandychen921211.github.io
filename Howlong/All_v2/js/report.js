@@ -1,11 +1,14 @@
 /********************************************************************
- * report.js (CLEAN FINAL)
+ * report.js (CLEAN FINAL v2)
  * - ONE scaling system (fit stage into viewport, centered)
  * - Fade-in safe (never blank on mobile)
  * - Data source priority:
- *    1) URL params (for phone via QR)
- *    2) sessionStorage (for kiosk flow)
- * - Build share URL (report.html?src=qr&...) and store to sessionStorage
+ *    1) URL params (phone via QR)
+ *    2) sessionStorage (kiosk flow)
+ * - Shot priority:
+ *    1) URL param "shot" (Firebase URL)
+ *    2) sessionStorage "r_shot_url"
+ *    3) legacy sessionStorage "r_shot" (dataURL)
  ********************************************************************/
 
 // ===== helpers =====
@@ -16,8 +19,12 @@ function pad2(n) {
   return String(n).padStart(2, "0");
 }
 function safeGet(k, fallback = "") {
-  const v = sessionStorage.getItem(k);
-  return v == null ? fallback : v;
+  try {
+    const v = sessionStorage.getItem(k);
+    return v == null ? fallback : v;
+  } catch {
+    return fallback;
+  }
 }
 const urlParams = new URLSearchParams(location.search);
 function getParamOrStorage(paramKey, storageKey, fallback = "") {
@@ -64,30 +71,47 @@ const ACTION_ICON = {
 };
 
 // ===== read values (URL first, then storage) =====
+// NOTE: ui.js 產出的 share 參數鍵名是：level, mmss, waitingPct, actionType, actionCount, engagementLabel, shot
+// 但你舊版 report.js 也可能吃：pct, action, count, eng
+// 這裡做「雙鍵相容」。
+
 const level = clamp(
   Number(getParamOrStorage("level", "r_level", "0")) || 0,
   0,
   4,
 );
 
-const engagementLabel = getParamOrStorage(
-  "eng",
-  "r_engagementLabel",
-  "01 None Engagement",
-);
+const engagementLabel =
+  getParamOrStorage("engagementLabel", "r_engagementLabel", "") ||
+  getParamOrStorage("eng", "r_engagementLabel", "01 None Engagement");
 
 const mmss = getParamOrStorage("mmss", "r_mmss", "00:00");
-const actionType = getParamOrStorage("action", "r_actionType", "neck");
-const actionCount =
-  Number(getParamOrStorage("count", "r_actionCount", "0")) || 0;
-const waitingPct = Number(getParamOrStorage("pct", "r_waitingPct", "0")) || 0;
 
-const shot = getParamOrStorage("shot", "r_shot", ""); // 若你未打算分享截圖，可留空
+const actionType =
+  getParamOrStorage("actionType", "r_actionType", "") ||
+  getParamOrStorage("action", "r_actionType", "neck");
+
+const actionCount =
+  Number(
+    getParamOrStorage("actionCount", "r_actionCount", "") ||
+      getParamOrStorage("count", "r_actionCount", "0"),
+  ) || 0;
+
+const waitingPct =
+  Number(
+    getParamOrStorage("waitingPct", "r_waitingPct", "") ||
+      getParamOrStorage("pct", "r_waitingPct", "0"),
+  ) || 0;
+
 const serial = getParamOrStorage("serial", "r_serial", "00000001");
 
 const shape01 = getParamOrStorage("s1", "r_shape01", "");
 const shape02 = getParamOrStorage("s2", "r_shape02", "");
 const shape03 = getParamOrStorage("s3", "r_shape03", "");
+
+// ✅ Shot priority: URL shot > session r_shot_url > legacy r_shot
+const shot =
+  urlParams.get("shot") || safeGet("r_shot_url", "") || safeGet("r_shot", "");
 
 // ===== Engagement label parse =====
 function parseEngLabel(str) {
@@ -181,13 +205,16 @@ if (pctEl) pctEl.textContent = `${clamp(waitingPct, 0, 99)}%`;
 if (actIconEl) actIconEl.src = ACTION_ICON[actionType] || ACTION_ICON.neck;
 if (actCountEl) actCountEl.textContent = String(actionCount).padStart(2, "0");
 
-// --- Shot ---
+// --- Shot (核心：確保不是 display:none) ---
 if (shotEl) {
   if (shot) {
     shotEl.src = shot;
+    shotEl.style.display = "block"; // ✅ 強制顯示
     shotEl.style.opacity = "1";
   } else {
+    shotEl.style.display = "none";
     shotEl.style.opacity = "0";
+    console.warn("[SHOT] missing (no URL shot, no session r_shot_url/r_shot)");
   }
 }
 
@@ -293,6 +320,7 @@ setInterval(updatePills, 30 * 1000);
     const top = (vh - DESIGN_H * scale) / 2;
 
     stage.style.transform = `translate(${left}px, ${top}px) scale(${scale})`;
+    stage.style.transformOrigin = "top left";
   }
 
   applyScale();
@@ -301,75 +329,34 @@ setInterval(updatePills, 30 * 1000);
   window.visualViewport?.addEventListener("resize", applyScale);
 })();
 
-// ===== Build share URL for QR (only meaningful on kiosk side) =====
-function buildShareURL() {
-  const params = new URLSearchParams();
-  params.set("src", "qr");
-
-  params.set("level", String(level));
-  params.set("mmss", String(mmss));
-  params.set("pct", String(waitingPct));
-  params.set("action", String(actionType));
-  params.set("count", String(actionCount));
-  params.set("serial", String(serial));
-
-  // 可選：若你不想把圖塞進網址（會很長），就不要傳
-  // params.set("shot", shot);
-  // params.set("s1", shape01);
-  // params.set("s2", shape02);
-  // params.set("s3", shape03);
-
-  return `report.html?${params.toString()}`;
-}
-
-// 存起來給 qrcode.html 的 qrcode.js 用
+// ===== OPTIONAL: store share URL for qrcode.html (kiosk only) =====
 try {
-  sessionStorage.setItem("qr_report_url", buildShareURL());
+  // 只有 kiosk 流程才需要寫 qr_report_url
+  // 手機掃 QR 進來 (src=qr) 不需要、也不應覆蓋
+  const isQR = urlParams.get("src") === "qr";
+  if (!isQR) {
+    const params = new URLSearchParams();
+    params.set("src", "qr");
+    params.set("level", String(level));
+    params.set("engagementLabel", String(engagementLabel));
+    params.set("mmss", String(mmss));
+    params.set("actionType", String(actionType));
+    params.set("actionCount", String(actionCount));
+    params.set("waitingPct", String(waitingPct));
+
+    // ✅ 只允許 Firebase/https URL，不允許 data:image...
+    const shotUrlOnly = (
+      urlParams.get("shot") ||
+      safeGet("r_shot_url", "") ||
+      ""
+    ).trim();
+
+    if (/^https?:\/\//i.test(shotUrlOnly)) {
+      params.set("shot", shotUrlOnly);
+    }
+
+    sessionStorage.setItem("qr_report_url", `report.html?${params.toString()}`);
+  }
 } catch (e) {
   console.warn("Cannot write qr_report_url to sessionStorage", e);
-}
-
-function resizeStage() {
-  const viewport = document.getElementById("viewport");
-  const app = document.getElementById("reportApp");
-  if (!viewport || !app) return;
-
-  const designW = 1080;
-  const designH = 1920;
-
-  const screenW = viewport.clientWidth;
-  const screenH = viewport.clientHeight;
-
-  const scale = Math.min(screenW / designW, screenH / designH);
-
-  const offsetX = (screenW - designW * scale) / 2;
-  const offsetY = (screenH - designH * scale) / 2;
-
-  app.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
-}
-
-window.addEventListener("resize", resizeStage);
-window.addEventListener("orientationchange", () => setTimeout(resizeStage, 50));
-document.addEventListener("DOMContentLoaded", resizeStage);
-
-// ===== Shot image (supports: URL param > session r_shot_url > legacy r_shot) =====
-const qs = new URLSearchParams(location.search);
-
-const shotFromQuery = qs.get("shot");
-const shotFromSessionURL = sessionStorage.getItem("r_shot_url");
-const shotFromLegacy = sessionStorage.getItem("r_shot");
-
-const shotSrc = shotFromQuery || shotFromSessionURL || shotFromLegacy;
-
-const img = document.getElementById("reportShot");
-if (img) {
-  if (shotSrc) {
-    img.src = shotSrc;
-    img.style.display = "";
-  } else {
-    img.style.display = "none";
-    console.warn(
-      "[SHOT] missing (no query shot, no session r_shot_url/r_shot)",
-    );
-  }
 }

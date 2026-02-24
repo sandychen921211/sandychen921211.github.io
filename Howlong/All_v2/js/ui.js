@@ -322,27 +322,29 @@ async function goNextPage(reason) {
     sessionStorage.setItem("r_actionCount", String(actionCount));
     sessionStorage.setItem("r_waitingPct", String(waitingPct));
 
-    // ===== (E) 截圖：上傳 Firebase 拿 URL（跨裝置可用）=====
-    const shot = captureCompositeShot();
+    // ===== (E) 截圖：本機 dataURL +（可選）上傳 Firebase 拿 URL =====
+    const shotDataURL = captureCompositeShot();
+
+    // ✅ 1) 同裝置一定要有：report.html 直接吃 sessionStorage 的 dataURL
+    if (shotDataURL) {
+      sessionStorage.setItem("r_shot", shotDataURL);
+    }
+
     let shotURL = "";
 
-    if (shot && window.uploadShot) {
+    // ✅ 2) 跨裝置才需要：上傳拿 URL（失敗也沒關係，至少本機還有 r_shot）
+    if (shotDataURL && window.uploadShot) {
       try {
-        // ✅ 最多等 2.5 秒，避免卡死不跳頁
-        shotURL = await withTimeout(window.uploadShot(shot), 2500);
+        shotURL = await withTimeout(window.uploadShot(shotDataURL), 8000); // 建議拉長一點
         console.log("[SHOT UPLOADED]", shotURL);
       } catch (e) {
         console.warn("[SHOT UPLOAD FAILED/TIMEOUT]", e);
       }
-    } else {
-      console.warn(
-        "[uploadShot missing] 請確認 index.html 有 <script type='module' src='./js/uploadShot.js'></script>",
-      );
     }
 
     if (shotURL) sessionStorage.setItem("r_shot_url", shotURL);
 
-    // ===== (F) 產生 QR share URL（帶 shotURL）=====
+    // ✅ 3) QR share URL：有 URL 就帶 URL，沒有就不帶（手機端就不顯示）
     const params = new URLSearchParams();
     params.set("src", "qr");
     params.set("level", String(level));

@@ -110,15 +110,7 @@
 
       if (!isQR) {
         setTimeout(() => {
-          // ✅ 從 sessionStorage 取剛剛 report.js 寫入的 share URL
-          const share = sessionStorage.getItem("qr_report_url");
-
-          // ✅ 帶到 qrcode.html（即使 share 為空也不會壞）
-          const next = share
-            ? `./qrcode.html?share=${encodeURIComponent(share)}`
-            : `./qrcode.html`;
-
-          window.location.href = next;
+          window.location.href = "./qrcode.html";
         }, 5000);
       }
     </script>
