@@ -281,16 +281,23 @@ const NEXT_PAGE_URL = "./loading.html"; // 你可改路徑
 const TIME_LIMIT_MS = 7 * 60 * 1000; // 7 minutes
 
 let hasNavigated = false;
-
-function goNextPage(reason) {
+async function goNextPage(reason) {
   if (hasNavigated) return;
   hasNavigated = true;
 
   console.log("[NAVIGATE] -> next page, reason:", reason);
 
+  // ===== helper: timeout wrapper =====
+  const withTimeout = (promise, ms) =>
+    Promise.race([
+      promise,
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error(`timeout ${ms}ms`)), ms),
+      ),
+    ]);
+
   // ===== 1) 存第一頁結果到 sessionStorage =====
   try {
-    // (A) 05 等級文字：依你現有五階規則
     const level = getLevelByCycles(totalCycles);
     const LABELS = [
       "01 None Engagement",
@@ -300,16 +307,12 @@ function goNextPage(reason) {
       "05 Max Engagement",
     ];
 
-    // (B) 時間：第三頁紫框只要「分:秒」
     const t = (timeText?.textContent || "00:00:00").split(":");
     const mmss =
       t.length >= 3 ? `${t[1]}:${t[2]}` : timeText?.textContent || "00:00";
 
-    // (C) 動作 icon + 次數（綠框）
     const actionType = currentActionType || "neck";
     const actionCount = clamp99(actionCounts[actionType] || 0);
-
-    // (D) Waiting Index（紅框）
     const waitingPct = Math.min(99, Number(pct || 0));
 
     sessionStorage.setItem("r_level", String(level));
@@ -319,18 +322,45 @@ function goNextPage(reason) {
     sessionStorage.setItem("r_actionCount", String(actionCount));
     sessionStorage.setItem("r_waitingPct", String(waitingPct));
 
-    // (E) 藍框截圖：從「video + maskCanvas + blobCanvas」合成一張
-    // 只要有抓到一次就不覆寫，符合「隨機截一張」的要求（你也可改成每次覆寫）
-    if (!sessionStorage.getItem("r_shot")) {
-      const shot = captureCompositeShot();
-      if (shot) sessionStorage.setItem("r_shot", shot);
+    // ===== (E) 截圖：上傳 Firebase 拿 URL（跨裝置可用）=====
+    const shot = captureCompositeShot();
+    let shotURL = "";
+
+    if (shot && window.uploadShot) {
+      try {
+        // ✅ 最多等 2.5 秒，避免卡死不跳頁
+        shotURL = await withTimeout(window.uploadShot(shot), 2500);
+        console.log("[SHOT UPLOADED]", shotURL);
+      } catch (e) {
+        console.warn("[SHOT UPLOAD FAILED/TIMEOUT]", e);
+      }
+    } else {
+      console.warn(
+        "[uploadShot missing] 請確認 index.html 有 <script type='module' src='./js/uploadShot.js'></script>",
+      );
     }
+
+    if (shotURL) sessionStorage.setItem("r_shot_url", shotURL);
+
+    // ===== (F) 產生 QR share URL（帶 shotURL）=====
+    const params = new URLSearchParams();
+    params.set("src", "qr");
+    params.set("level", String(level));
+    params.set("engagementLabel", LABELS[level] || LABELS[0]);
+    params.set("mmss", mmss);
+    params.set("actionType", actionType);
+    params.set("actionCount", String(actionCount));
+    params.set("waitingPct", String(waitingPct));
+    if (shotURL) params.set("shot", shotURL);
+
+    const share = `report.html?${params.toString()}`;
+    sessionStorage.setItem("qr_report_url", share);
+    console.log("[QR SHARE]", share);
   } catch (e) {
     console.warn("[REPORT SAVE FAILED]", e);
   }
 
-  // ===== 2) ease-out 後跳頁 =====
-  // 你第一頁若已經有 fade CSS，可以改成加 class；這裡用最穩的方式：加一個遮罩做淡出
+  // ===== 2) ease-out 後跳頁（保留你原本行為）=====
   const overlay = document.createElement("div");
   overlay.style.position = "fixed";
   overlay.style.inset = "0";
@@ -349,7 +379,6 @@ function goNextPage(reason) {
     window.location.href = NEXT_PAGE_URL;
   }, 540);
 }
-
 // ===== 合成截圖工具（放在 ui.js 任何位置，只要在 goNextPage 能呼叫到）=====
 function captureCompositeShot() {
   const v = window.video || document.getElementById("video");

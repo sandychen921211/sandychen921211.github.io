@@ -351,3 +351,25 @@ function resizeStage() {
 window.addEventListener("resize", resizeStage);
 window.addEventListener("orientationchange", () => setTimeout(resizeStage, 50));
 document.addEventListener("DOMContentLoaded", resizeStage);
+
+// ===== Shot image (supports: URL param > session r_shot_url > legacy r_shot) =====
+const qs = new URLSearchParams(location.search);
+
+const shotFromQuery = qs.get("shot");
+const shotFromSessionURL = sessionStorage.getItem("r_shot_url");
+const shotFromLegacy = sessionStorage.getItem("r_shot");
+
+const shotSrc = shotFromQuery || shotFromSessionURL || shotFromLegacy;
+
+const img = document.getElementById("reportShot");
+if (img) {
+  if (shotSrc) {
+    img.src = shotSrc;
+    img.style.display = "";
+  } else {
+    img.style.display = "none";
+    console.warn(
+      "[SHOT] missing (no query shot, no session r_shot_url/r_shot)",
+    );
+  }
+}
