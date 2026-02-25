@@ -1,31 +1,21 @@
 /********************************************************************
- * report.js (CLEAN FINAL v2)
+ * report.js (CLEAN FINAL v3 - FIXED)
  * - ONE scaling system (fit stage into viewport, centered)
  * - Fade-in safe (never blank on mobile)
  * - Data source priority:
  *    1) URL params (phone via QR)
  *    2) sessionStorage (kiosk flow)
  * - Shot priority:
- *    1) URL param "shot" (Firebase URL)
+ *    1) URL param "shot" (Firebase URL, may be double-encoded)
  *    2) sessionStorage "r_shot_url"
  *    3) legacy sessionStorage "r_shot" (dataURL)
+ *
+ * Key Fix:
+ * - Handle double-encoded params (mmss=01%253A25, shot=https%253A...)
+ * - DO NOT break Firebase object path encoding (reports%2Fxxx.jpg must stay %2F)
  ********************************************************************/
 
 // ===== helpers =====
-function decodeDeep(s, max = 3) {
-  let out = String(s ?? "");
-  for (let i = 0; i < max; i++) {
-    try {
-      const next = decodeURIComponent(out.replace(/\+/g, "%20"));
-      if (next === out) break;
-      out = next;
-    } catch {
-      break;
-    }
-  }
-  return out;
-}
-
 function clamp(n, a, b) {
   return Math.max(a, Math.min(b, n));
 }
@@ -41,12 +31,76 @@ function safeGet(k, fallback = "") {
   }
 }
 const urlParams = new URLSearchParams(location.search);
+
 function getParamOrStorage(paramKey, storageKey, fallback = "") {
-  // URL param has priority (phone)
   const p = urlParams.get(paramKey);
   if (p != null && p !== "") return p;
-  // else fallback to kiosk sessionStorage
   return safeGet(storageKey, fallback);
+}
+
+// decode once safely (+ -> space)
+function decodeOnceSafe(s) {
+  try {
+    return decodeURIComponent(String(s ?? "").replace(/\+/g, "%20"));
+  } catch {
+    return String(s ?? "");
+  }
+}
+
+// deep decode for plain text only (mmss/labels), safe for double-encoded strings
+function decodeDeepText(s, max = 2) {
+  let out = String(s ?? "");
+  for (let i = 0; i < max; i++) {
+    const next = decodeOnceSafe(out);
+    if (next === out) break;
+    out = next;
+  }
+  return out;
+}
+
+// Normalize Firebase download URL:
+// - decode outer layer(s) so it becomes https://...
+// - then re-encode ONLY the object name part after /o/ to keep slashes as %2F
+function normalizeFirebaseShot(urlStr) {
+  let s = String(urlStr ?? "").trim();
+  if (!s) return "";
+
+  // dataURL must remain untouched
+  if (/^data:image\//i.test(s)) return s;
+
+  // decode outer encoding up to 2 rounds (handles %253A etc.)
+  for (let i = 0; i < 2; i++) {
+    if (/^https?:\/\//i.test(s)) break;
+    s = decodeOnceSafe(s);
+  }
+
+  // still not a URL? return as-is for debugging
+  if (!/^https?:\/\//i.test(s)) return s;
+
+  try {
+    const u = new URL(s);
+
+    // Only normalize Firebase Storage download URL
+    if (u.hostname === "firebasestorage.googleapis.com") {
+      const marker = "/o/";
+      const idx = u.pathname.indexOf(marker);
+      if (idx !== -1) {
+        const prefix = u.pathname.slice(0, idx + marker.length); // .../o/
+        const objPart = u.pathname.slice(idx + marker.length); // object name part
+
+        // objPart might currently be "reports/xxx.jpg" (bad) or "reports%2Fxxx.jpg" (good)
+        // Normalize by decoding then encoding (slashes become %2F)
+        const objDecoded = decodeOnceSafe(objPart);
+        const objEncoded = encodeURIComponent(objDecoded);
+
+        u.pathname = prefix + objEncoded;
+      }
+    }
+
+    return u.toString();
+  } catch {
+    return s;
+  }
 }
 
 // ===== fade-in safe =====
@@ -85,38 +139,20 @@ const ACTION_ICON = {
 };
 
 // ===== read values (URL first, then storage) =====
-// NOTE: ui.js 產出的 share 參數鍵名是：level, mmss, waitingPct, actionType, actionCount, engagementLabel, shot
-// 但你舊版 report.js 也可能吃：pct, action, count, eng
-// 這裡做「雙鍵相容」。
-
 const level = clamp(
   Number(getParamOrStorage("level", "r_level", "0")) || 0,
   0,
   4,
 );
 
-const engagementLabel =
+const engagementLabelRaw =
   getParamOrStorage("engagementLabel", "r_engagementLabel", "") ||
   getParamOrStorage("eng", "r_engagementLabel", "01 None Engagement");
 
-function decodeDeep(s) {
-  let out = String(s ?? "");
-  for (let i = 0; i < 3; i++) {
-    try {
-      const next = decodeURIComponent(out);
-      if (next === out) break;
-      out = next;
-    } catch {
-      break;
-    }
-  }
-  return out;
-}
+const engagementLabel = decodeDeepText(engagementLabelRaw, 2);
 
 const mmssRaw = getParamOrStorage("mmss", "r_mmss", "00:00");
-const mmss = decodeDeep(mmssRaw);
-
-if (timeEl) timeEl.textContent = mmss;
+const mmss = decodeDeepText(mmssRaw, 2);
 
 const actionType =
   getParamOrStorage("actionType", "r_actionType", "") ||
@@ -144,7 +180,7 @@ const shape03 = getParamOrStorage("s3", "r_shape03", "");
 const shotRaw =
   urlParams.get("shot") || safeGet("r_shot_url", "") || safeGet("r_shot", "");
 
-const shot = /^data:image\//i.test(shotRaw) ? shotRaw : decodeDeep(shotRaw);
+const shot = normalizeFirebaseShot(shotRaw);
 
 // ===== Engagement label parse =====
 function parseEngLabel(str) {
@@ -238,11 +274,21 @@ if (pctEl) pctEl.textContent = `${clamp(waitingPct, 0, 99)}%`;
 if (actIconEl) actIconEl.src = ACTION_ICON[actionType] || ACTION_ICON.neck;
 if (actCountEl) actCountEl.textContent = String(actionCount).padStart(2, "0");
 
-// --- Shot (核心：確保不是 display:none) ---
+// --- Shot (core) ---
 if (shotEl) {
+  // Debug hooks (optional but very helpful)
+  shotEl.addEventListener("load", () => {
+    console.log("[SHOT] loaded", shotEl.naturalWidth, shotEl.naturalHeight);
+  });
+  shotEl.addEventListener("error", () => {
+    console.error("[SHOT] failed to load:", shotEl.src);
+    console.log("[SHOT raw]", shotRaw);
+    console.log("[SHOT normalized]", shot);
+  });
+
   if (shot) {
     shotEl.src = shot;
-    shotEl.style.display = "block"; // ✅ 強制顯示
+    shotEl.style.display = "block";
     shotEl.style.opacity = "1";
   } else {
     shotEl.style.display = "none";
@@ -364,8 +410,6 @@ setInterval(updatePills, 30 * 1000);
 
 // ===== OPTIONAL: store share URL for qrcode.html (kiosk only) =====
 try {
-  // 只有 kiosk 流程才需要寫 qr_report_url
-  // 手機掃 QR 進來 (src=qr) 不需要、也不應覆蓋
   const isQR = urlParams.get("src") === "qr";
   if (!isQR) {
     const params = new URLSearchParams();
@@ -377,15 +421,14 @@ try {
     params.set("actionCount", String(actionCount));
     params.set("waitingPct", String(waitingPct));
 
-    // ✅ 只允許 Firebase/https URL，不允許 data:image...
+    // Only allow a real https URL (exclude data:image)
     const shotUrlOnly = (
       urlParams.get("shot") ||
       safeGet("r_shot_url", "") ||
       ""
     ).trim();
-
     if (/^https?:\/\//i.test(shotUrlOnly)) {
-      params.set("shot", shotUrlOnly);
+      params.set("shot", encodeURIComponent(shotUrlOnly));
     }
 
     sessionStorage.setItem("qr_report_url", `report.html?${params.toString()}`);
