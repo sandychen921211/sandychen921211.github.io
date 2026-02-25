@@ -382,6 +382,7 @@ async function goNextPage(reason) {
   }, 540);
 }
 // ===== 合成截圖工具（放在 ui.js 任何位置，只要在 goNextPage 能呼叫到）=====
+
 function captureCompositeShot() {
   const v = window.video || document.getElementById("video");
   if (!v || !v.videoWidth) return null;
