@@ -13,7 +13,7 @@ function resizeStage() {
   const designH = 1920;
   const scale = Math.min(
     window.innerWidth / designW,
-    window.innerHeight / designH
+    window.innerHeight / designH,
   );
   app.style.transform = `translate(0px, 0px) scale(${scale})`;
 }
@@ -118,11 +118,14 @@ function initRow(rowEl) {
     buildSlotDigits(digitsEl, initialStr);
 
     // 持續更新：每 0.7~1.4s 滾一次
-    setInterval(() => {
-      const v = randInt(min, max);
-      const s = formatByRule(v, pad);
-      animateTo(digitsEl, s, 420);
-    }, randInt(700, 1400));
+    setInterval(
+      () => {
+        const v = randInt(min, max);
+        const s = formatByRule(v, pad);
+        animateTo(digitsEl, s, 420);
+      },
+      randInt(700, 1400),
+    );
   }
 
   if (mode === "toggle") {
@@ -135,11 +138,14 @@ function initRow(rowEl) {
     buildSlotDigits(digitsEl, initialStr);
 
     // 交互：每 0.9~1.6s 互換一次（滾輪）
-    setInterval(() => {
-      state = !state;
-      const v = state ? a : b;
-      animateTo(digitsEl, padN(v, pad), 420);
-    }, randInt(900, 1600));
+    setInterval(
+      () => {
+        state = !state;
+        const v = state ? a : b;
+        animateTo(digitsEl, padN(v, pad), 420);
+      },
+      randInt(900, 1600),
+    );
   }
 }
 
@@ -158,44 +164,6 @@ function formatByRule(n, padRule) {
 
 /* Init mins blocks */
 document.querySelectorAll(".mins-row").forEach(initRow);
-
-/* ===== Symbols (fixed grid rotate, NO blank, 1.2~1.5s per cell) ===== */
-const SYMBOL_CHARS = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
-
-function pickSymbol(prev) {
-  let s;
-  do {
-    s = SYMBOL_CHARS[(Math.random() * SYMBOL_CHARS.length) | 0];
-  } while (s === prev); // 避免同一格連續一樣（想要可以移除）
-  return s;
-}
 
 /**
  * 建立固定排數/每排格數，並讓每格原地輪轉符號（永不空白）
@@ -258,31 +226,14 @@ function startSymbolRotate(box, rowCounts, opt = {}) {
 
 /* ===== Apply to your two green boxes (match your spec) ===== */
 
-/* 左上共6排：
-   23, 19, 5, 6, 18, 24
-*/
-startSymbolRotate(
-  document.getElementById("glyphBoxTopLeft"),
-  [25, 21, 7, 8, 20, 28]
-);
-
-/* 右下共「四行」(你描述：3排符號 + 空一行 + 3個)
-   你要：
-   1) 16個
-   2) 7個
-   3) 空一行
-   4) 3個
-
-   做法：第三行用 0 代表空行
-*/
 startSymbolRotate(
   document.getElementById("glyphBoxBottomRight"),
-  [16, 7, 0, 3]
+  [16, 7, 0, 3],
 );
 
 // ===== 10 秒後跳到 report.html（含 ease in/out）=====
 const REPORT_PAGE_URL = "./report.html";
-const REPORT_DELAY_MS = 10 * 1000;
+const REPORT_DELAY_MS = 10 * 2000;
 
 let loadingHasNav = false;
 
