@@ -12,6 +12,20 @@
  ********************************************************************/
 
 // ===== helpers =====
+function decodeDeep(s, max = 3) {
+  let out = String(s ?? "");
+  for (let i = 0; i < max; i++) {
+    try {
+      const next = decodeURIComponent(out.replace(/\+/g, "%20"));
+      if (next === out) break;
+      out = next;
+    } catch {
+      break;
+    }
+  }
+  return out;
+}
+
 function clamp(n, a, b) {
   return Math.max(a, Math.min(b, n));
 }
@@ -127,8 +141,10 @@ const shape02 = getParamOrStorage("s2", "r_shape02", "");
 const shape03 = getParamOrStorage("s3", "r_shape03", "");
 
 // ✅ Shot priority: URL shot > session r_shot_url > legacy r_shot
-const shot =
+const shotRaw =
   urlParams.get("shot") || safeGet("r_shot_url", "") || safeGet("r_shot", "");
+
+const shot = /^data:image\//i.test(shotRaw) ? shotRaw : decodeDeep(shotRaw);
 
 // ===== Engagement label parse =====
 function parseEngLabel(str) {
