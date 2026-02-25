@@ -13,7 +13,7 @@ const firebaseConfig = {
   projectId: "howlong-d2047",
   // ⚠️ 這個很重要：通常應該是 xxx.appspot.com
   // 如果你 console 給的是 firebasestorage.app，請回 firebase 設定頁再複製一次確認
-  storageBucket: "howlong-d2047.firebasestorage.app",
+  storageBucket: "gs://howlong-d2047.firebasestorage.app",
   messagingSenderId: "624045872057",
   appId: "1:624045872057:web:16c95f5a0d4b52179ddc68",
 };
