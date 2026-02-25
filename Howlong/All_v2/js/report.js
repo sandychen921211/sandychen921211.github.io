@@ -85,7 +85,24 @@ const engagementLabel =
   getParamOrStorage("engagementLabel", "r_engagementLabel", "") ||
   getParamOrStorage("eng", "r_engagementLabel", "01 None Engagement");
 
-const mmss = getParamOrStorage("mmss", "r_mmss", "00:00");
+function decodeDeep(s) {
+  let out = String(s ?? "");
+  for (let i = 0; i < 3; i++) {
+    try {
+      const next = decodeURIComponent(out);
+      if (next === out) break;
+      out = next;
+    } catch {
+      break;
+    }
+  }
+  return out;
+}
+
+const mmssRaw = getParamOrStorage("mmss", "r_mmss", "00:00");
+const mmss = decodeDeep(mmssRaw);
+
+if (timeEl) timeEl.textContent = mmss;
 
 const actionType =
   getParamOrStorage("actionType", "r_actionType", "") ||
