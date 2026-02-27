@@ -36,7 +36,7 @@ body {
 .card {
   background: var(--neon);
   border-radius: var(--cardRadius);
-  padding: 128px 68px 60px;
+  padding: 100px 68px 60px;
 }
 
 .qrArea {
@@ -75,7 +75,7 @@ body {
   font-size: 28px;
   color: #000;
   background: var(--neon);
-  border-radius: 10px;
+  border-radius: 2px;
   /* 用一圈留白，避免 logo 壓到 QR 點太多 */
   outline: 10px solid var(--neon);
 }
