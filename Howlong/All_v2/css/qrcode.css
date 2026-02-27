@@ -39,26 +39,26 @@ body {
   padding: 128px 68px 60px;
 }
 
-/* QR 區域置中 */
 .qrArea {
   position: relative;
   display: grid;
   place-items: center;
-  padding: 18px; /* 這是 QR 的「安靜區」(quiet zone)，掃描很重要 */
-  border-radius: 18px;
 }
 
-/* 讓 QR 本體保持固定尺寸 */
+/* 重點：#qrcode 也要變成置中容器 */
 #qrcode {
   width: 280px;
   height: 280px;
+  display: grid; /* 或 flex */
+  place-items: center; /* 讓裡面的 canvas/img 置中 */
 }
 
-#qrcode img,
-#qrcode canvas {
-  width: 280px !important;
-  height: 280px !important;
+/* canvas/img 不要再用 !important 強塞寬高（會有 rounding 偏移） */
+#qrcode canvas,
+#qrcode img {
   display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* 中間 Logo（避免太大，建議不要超過 QR 寬度的 18%） */

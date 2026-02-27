@@ -111,7 +111,7 @@ function applyUI() {
   }
 
   // bar + gear
-  stage.style.setProperty("--anxFill", levelToFill(level));
+  //stage.style.setProperty("--anxFill", levelToFill(level));
   stage.style.setProperty("--gearStep", `${level * GEAR_STEP_PX}px`);
 
   // expose level for mask.js
