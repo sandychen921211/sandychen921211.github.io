@@ -39,7 +39,7 @@ body {
 
   /* 👇 關鍵三行 */
   width: 100%;
-  max-width: 520px; /* ← 改這裡，例：480 / 500 / 520 */
+  max-width: 480px; /* ← 改這裡，例：480 / 500 / 520 */
   margin: 0 auto;
 
   padding: 68px 48px 58px;
@@ -122,7 +122,7 @@ body {
 
 .chev {
   color: var(--txt);
-  font-size: 14px;
+  font-size: 20px;
   letter-spacing: 0.12em;
   opacity: 0.9;
 }
