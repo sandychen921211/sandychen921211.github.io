@@ -36,7 +36,13 @@ body {
 .card {
   background: var(--neon);
   border-radius: var(--cardRadius);
-  padding: 90px 58px 50px;
+
+  /* 👇 關鍵三行 */
+  width: 100%;
+  max-width: 520px; /* ← 改這裡，例：480 / 500 / 520 */
+  margin: 0 auto;
+
+  padding: 68px 48px 58px;
 }
 
 .qrArea {

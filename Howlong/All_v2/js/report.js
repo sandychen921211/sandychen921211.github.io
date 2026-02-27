@@ -194,11 +194,11 @@ const engParsed = parseEngLabel(engagementLabel);
 
 // ===== copy decks =====
 const ENG_TEXT_BY_LEVEL = [
-  { zh: "穩定等待", en: "None Engagement" },
-  { zh: "低度參與", en: "Low Engagement" },
-  { zh: "中度參與", en: "Med Engagement" },
-  { zh: "高度參與", en: "High Engagement" },
-  { zh: "極限參與", en: "Max Engagement" },
+  { zh: "穩定等待", en: "Baseline" },
+  { zh: "輕微警覺", en: "Mild Alert" },
+  { zh: "調適階段", en: "Adaptive Threshold" },
+  { zh: "不安顯示", en: "Visible Restlessness" },
+  { zh: "高度干擾", en: "High Interference" },
 ];
 
 const DESC_BY_LEVEL_2LINES = [
