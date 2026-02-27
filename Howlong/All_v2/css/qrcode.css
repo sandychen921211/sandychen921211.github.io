@@ -47,6 +47,8 @@ body {
 
 /* 重點：#qrcode 也要變成置中容器 */
 #qrcode {
+  position: relative;
+  top: -15%;
   width: 280px;
   height: 280px;
   display: grid; /* 或 flex */
