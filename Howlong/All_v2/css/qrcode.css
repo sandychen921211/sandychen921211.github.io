@@ -48,7 +48,7 @@ body {
 /* 重點：#qrcode 也要變成置中容器 */
 #qrcode {
   position: relative;
-  top: -15%;
+  top: 0%;
   width: 280px;
   height: 280px;
   display: grid; /* 或 flex */
@@ -65,7 +65,8 @@ body {
 
 /* 中間 Logo（避免太大，建議不要超過 QR 寬度的 18%） */
 .qrLogo {
-  position: absolute;
+  position: relative;
+  top: -240%;
   width: 70px;
   height: 70px;
   display: grid;

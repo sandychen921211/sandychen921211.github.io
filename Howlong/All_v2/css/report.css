@@ -313,6 +313,7 @@ body {
   font-style: italic; /* Italic */
 }
 .ch-word {
+  margin-left: 10px;
   position: relative;
   top: -110px;
   left: 50px;
@@ -321,6 +322,7 @@ body {
 .eng-word {
   width: 100px;
   position: relative;
+  margin-left: 10px;
   top: -105px;
   left: 50px;
   font-size: 20px;
