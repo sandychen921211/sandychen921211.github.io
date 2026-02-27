@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("[QR] render error", e);
     return;
   }
-  qrBox.style.background = "#fff";
+  //qrBox.style.background = "#fff";
   qrBox.style.padding = "12px";
   console.log("[QR target] =>", fullURL);
 
