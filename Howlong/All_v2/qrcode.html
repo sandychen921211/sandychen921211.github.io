@@ -11,13 +11,27 @@
   <body>
     <div id="viewport">
       <div class="stage">
-        <div class="title">SCAN TO VIEW YOUR REPORT</div>
+        <div class="card">
+          <div class="qrArea">
+            <div class="qrcode" id="qrcode"></div>
 
-        <div class="qrWrap">
-          <div class="qrcode" id="qrcode"></div>
+            <!-- 中間 logo（可留可拿掉；擋太大會影響掃描） -->
+            <div class="qrLogo" aria-hidden="true">
+              <img src="./assets/img/qrcode_logo.png" />
+            </div>
+          </div>
+
+          <div class="cardFooter">
+            <div class="chev left">▶▶▶</div>
+
+            <div class="caption">
+              <div class="captionZh">快速掃描下載</div>
+              <div class="captionEn">QUICK SCAN TO DOWNLOAD</div>
+            </div>
+
+            <div class="chev right">◀◀◀</div>
+          </div>
         </div>
-
-        <div class="hint">請用手機掃描 QR Code</div>
       </div>
     </div>
 

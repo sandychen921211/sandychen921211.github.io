@@ -1,54 +1,127 @@
-html,
+:root {
+  --bg: #000;
+  --neon: #d9ff00; /* 螢光黃，可微調 */
+  --txt: #000;
+  --cardRadius: 28px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  height: 100%;
-  background: #000;
-  color: #fff;
-  font-family: system-ui, "Noto Sans TC";
+  height: 100svh;
+  background: var(--bg);
+  color: #000;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Noto Sans TC",
+    sans-serif;
 }
 
 #viewport {
   height: 100%;
   display: grid;
   place-items: center;
+  padding: 24px;
 }
 
 .stage {
+  width: min(560px, 94vw);
+}
+
+/* 螢光黃卡片 */
+.card {
+  background: var(--neon);
+  border-radius: var(--cardRadius);
+  padding: 128px 68px 60px;
+}
+
+/* QR 區域置中 */
+.qrArea {
+  position: relative;
   display: grid;
-  gap: 24px;
   place-items: center;
+  padding: 18px; /* 這是 QR 的「安靜區」(quiet zone)，掃描很重要 */
+  border-radius: 18px;
 }
 
-.title {
-  letter-spacing: 0.12em;
-  font-size: 14px;
-  opacity: 0.85;
-}
-
-.qrWrap {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-}
-.qrcode {
-  color: #000;
-}
+/* 讓 QR 本體保持固定尺寸 */
 #qrcode {
-  width: 260px;
-  height: 260px;
+  width: 280px;
+  height: 280px;
 }
 
 #qrcode img,
 #qrcode canvas {
-  width: 260px !important;
-  height: 260px !important;
+  width: 280px !important;
+  height: 280px !important;
+  display: block;
 }
 
-.hint {
-  font-size: 12px;
-  opacity: 0.6;
+/* 中間 Logo（避免太大，建議不要超過 QR 寬度的 18%） */
+.qrLogo {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 28px;
+  color: #000;
+  background: var(--neon);
+  border-radius: 10px;
+  /* 用一圈留白，避免 logo 壓到 QR 點太多 */
+  outline: 10px solid var(--neon);
 }
 
-body {
-  height: 100svh;
+.qrLogo img {
+  width: 68px;
+  height: 60px;
+}
+
+/* 底部中英＋箭頭 */
+.cardFooter {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.caption {
+  text-align: center;
+  line-height: 1.1;
+  color: var(--txt);
+}
+
+.captionZh {
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+}
+
+.captionEn {
+  margin-top: 4px;
+  font-size: 14px;
+  letter-spacing: -0.04em;
+  opacity: 1;
+}
+
+.chev {
+  color: var(--txt);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+}
+
+.chev.left {
+  justify-self: start;
+}
+
+.chev.right {
+  justify-self: end;
 }
