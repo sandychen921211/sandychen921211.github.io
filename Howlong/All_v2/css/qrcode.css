@@ -29,14 +29,14 @@ body {
 }
 
 .stage {
-  width: min(560px, 94vw);
+  width: min(500px, 94vw);
 }
 
 /* 螢光黃卡片 */
 .card {
   background: var(--neon);
   border-radius: var(--cardRadius);
-  padding: 100px 68px 60px;
+  padding: 90px 58px 50px;
 }
 
 .qrArea {
@@ -87,7 +87,7 @@ body {
 
 /* 底部中英＋箭頭 */
 .cardFooter {
-  margin-top: 10px;
+  margin-top: -50px;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
