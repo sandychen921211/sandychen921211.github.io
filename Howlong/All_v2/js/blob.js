@@ -49,18 +49,18 @@
 
   const BLOB_COLORS = {
     1: ["#A48A70"],
-    2: ["#4D4D4D"],
-    3: ["#AFAFAF"],
-    4: ["#F4F4F4"],
+    2: ["#121212"],
+    3: ["#A8F0F7"],
+    4: ["#909090"],
     5: ["#E4FF1C"],
   };
 
   const TEXT_COLORS = {
-    1: "#ffffff",
+    1: "#3c342a",
     2: "#ffffff",
-    3: "#ffffff",
-    4: "#ffffff",
-    5: "#ffffff",
+    3: "#0e2834",
+    4: "#3f3f3f",
+    5: "#121212",
   };
 
   // ===== STATE =====
@@ -176,7 +176,7 @@
       0,
       0,
       bufferCanvas.width,
-      bufferCanvas.height
+      bufferCanvas.height,
     );
     const d = img.data;
     for (let i = 0; i < d.length; i += 4) {
@@ -233,7 +233,7 @@
           -b.w / 2,
           -b.h / 2,
           b.w,
-          b.h
+          b.h,
         );
         ctx.restore();
       }
@@ -256,7 +256,7 @@
         x + b.w - tw - pad * 2,
         y + b.h - fontSize - pad * 2,
         tw + pad * 2,
-        fontSize + pad * 2
+        fontSize + pad * 2,
       );
 
       ctx.fillStyle = b.textColor;
@@ -324,7 +324,7 @@
           burst.id,
           burst.type,
           burst.ax + (Math.random() - 0.5) * 70,
-          burst.ay + (Math.random() - 0.5) * 70
+          burst.ay + (Math.random() - 0.5) * 70,
         );
         burst.spawned += 1;
         burst.nextSpawnAt += BURST_INTERVAL;
