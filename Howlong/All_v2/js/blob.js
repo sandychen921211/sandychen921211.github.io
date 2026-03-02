@@ -56,7 +56,7 @@
   };
 
   const TEXT_COLORS = {
-    1: "#3c342a",
+    1: "#fff",
     2: "#ffffff",
     3: "#0e2834",
     4: "#3f3f3f",
