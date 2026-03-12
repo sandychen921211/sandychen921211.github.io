@@ -247,13 +247,69 @@ function checkAutoNavigation() {
   }
 }
 
+// ===== Prefer external camera helper =====
+async function getPreferredVideoConstraints() {
+  let tempStream = null;
+
+  try {
+    // 先喚醒權限，讓 device label 讀得到
+    tempStream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: false,
+    });
+
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const videoInputs = devices.filter((d) => d.kind === "videoinput");
+
+    // 找外接鏡頭關鍵字
+    const preferred = videoInputs.find((d) => {
+      const label = String(d.label || "").toLowerCase();
+      return (
+        label.includes("usb") ||
+        label.includes("webcam") ||
+        label.includes("external") ||
+        label.includes("logitech") ||
+        label.includes("brio") ||
+        label.includes("c920") ||
+        label.includes("c922") ||
+        label.includes("c930") ||
+        label.includes("streamcam") ||
+        label.includes("obsbot") ||
+        label.includes("elgato") ||
+        label.includes("avermedia")
+      );
+    });
+
+    if (preferred?.deviceId) {
+      console.log("[Using External Camera]", preferred.label);
+      return {
+        video: {
+          deviceId: { exact: preferred.deviceId },
+        },
+        audio: false,
+      };
+    }
+  } catch (err) {
+    console.warn("[External Camera Detect Failed]", err);
+  } finally {
+    if (tempStream) {
+      tempStream.getTracks().forEach((track) => track.stop());
+    }
+  }
+
+  // 找不到外接鏡頭就維持你原本設定
+  console.log("[Using Default Camera]");
+  return {
+    video: { facingMode: "user" },
+    audio: false,
+  };
+}
+
 // ===== Camera =====
 async function startCamera() {
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: "user" },
-      audio: false,
-    });
+    const constraints = await getPreferredVideoConstraints();
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
 
     videoEl.srcObject = stream;
     await videoEl.play();
@@ -322,6 +378,11 @@ async function goNextPage(reason) {
     sessionStorage.setItem("r_actionCount", String(actionCount));
     sessionStorage.setItem("r_waitingPct", String(waitingPct));
 
+    // 三個紅框專用數字
+    sessionStorage.setItem("r_count_arms", String(actionCounts.arms || 0)); // 雙手抱胸
+    sessionStorage.setItem("r_count_legs", String(actionCounts.legs || 0)); // 摳手指（你現在若先借用 legs）
+    sessionStorage.setItem("r_count_neck", String(actionCounts.neck || 0)); // 手摸脖子
+
     // ===== (E) 截圖：本機 dataURL +（可選）上傳 Firebase 拿 URL =====
     const shotDataURL = captureCompositeShot();
 
@@ -353,6 +414,12 @@ async function goNextPage(reason) {
     params.set("actionType", actionType);
     params.set("actionCount", String(actionCount));
     params.set("waitingPct", String(waitingPct));
+
+    // 三個紅框專用數字
+    params.set("countArms", String(actionCounts.arms || 0));
+    params.set("countLegs", String(actionCounts.legs || 0));
+    params.set("countNeck", String(actionCounts.neck || 0));
+
     if (shotURL) params.set("shot", shotURL);
 
     const share = `report.html?${params.toString()}`;

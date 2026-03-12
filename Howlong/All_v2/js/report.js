@@ -164,11 +164,24 @@ const actionCount =
       getParamOrStorage("count", "r_actionCount", "0"),
   ) || 0;
 
+const countArmsEl = document.getElementById("countArms");
+const countLegsEl = document.getElementById("countLegs");
+const countNeckEl = document.getElementById("countNeck");
+
 const waitingPct =
   Number(
     getParamOrStorage("waitingPct", "r_waitingPct", "") ||
       getParamOrStorage("pct", "r_waitingPct", "0"),
   ) || 0;
+
+const countArms =
+  Number(getParamOrStorage("countArms", "r_count_arms", "0")) || 0;
+
+const countLegs =
+  Number(getParamOrStorage("countLegs", "r_count_legs", "0")) || 0;
+
+const countNeck =
+  Number(getParamOrStorage("countNeck", "r_count_neck", "0")) || 0;
 
 const serial = getParamOrStorage("serial", "r_serial", "00000001");
 
@@ -273,6 +286,10 @@ if (pctEl) pctEl.textContent = `${clamp(waitingPct, 0, 99)}%`;
 
 if (actIconEl) actIconEl.src = ACTION_ICON[actionType] || ACTION_ICON.neck;
 if (actCountEl) actCountEl.textContent = String(actionCount).padStart(2, "0");
+
+if (countArmsEl) countArmsEl.textContent = String(countArms).padStart(2, "0");
+if (countLegsEl) countLegsEl.textContent = String(countLegs).padStart(2, "0");
+if (countNeckEl) countNeckEl.textContent = String(countNeck).padStart(2, "0");
 
 // --- Shot (core) ---
 if (shotEl) {

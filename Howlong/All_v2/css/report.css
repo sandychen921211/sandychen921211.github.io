@@ -380,7 +380,7 @@ body {
   height: auto;
   display: block;
 }
-.repeat-num {
+.repeat-num-01 {
   font-family: "PP Editorial New", serif;
   font-weight: 800; /* UltraBold */
   font-style: italic; /* Italic */
@@ -421,4 +421,23 @@ body {
   width: 1080px;
   height: 1920px;
   transform-origin: top left; /* ✅ 很重要 */
+}
+
+.repeat-number {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 40.8%;
+  left: 10.9%;
+  column-gap: 140px;
+  letter-spacing: 2px;
+  font-family: "PP Editorial New", serif;
+  font-weight: 800; /* UltraBold */
+  font-style: italic; /* Italic */
+  font-size: 104px;
+  color: #ffffff;
+  line-height: 1;
+}
+.repeat-num {
+  font-size: 52px;
 }
